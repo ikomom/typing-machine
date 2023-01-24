@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Title</title>
+</head>
+<style>
+    textarea {
+        width: 100%;
+    }
+    .flex-container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    .flex-container div {
+        flex: 1;
+    }
+</style>
+<body>
+<div class="flex-container">
+  <div>
+    <label for="input">input</label><br/><textarea id="input" rows="10" ></textarea>
+  </div>
+  <div>
+    <label for="output">output</label><br/><textarea id="output" rows="10"></textarea>
+  </div>
+</div>
+<button id="btn-start">start</button>
+<button id="btn-reset">reset</button>
+<pre id="typing"></pre>
+<script src="./main.ts" type="module"></script>
+</body>
+</html>

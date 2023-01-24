@@ -43,10 +43,12 @@
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "vite-dev": "vite"
   },
   "dependencies": {
-    "magic-string": "^0.27.0"
+    "magic-string": "^0.27.0",
+    "typeit": "^8.7.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.27.0",
