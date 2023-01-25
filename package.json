@@ -47,6 +47,7 @@
     "vite-dev": "vite playground"
   },
   "dependencies": {
+    "diff-match-patch-typescript": "^1.0.8",
     "magic-string": "^0.27.0"
   },
   "devDependencies": {
@@ -55,7 +56,6 @@
     "@antfu/utils": "^0.5.2",
     "@types/node": "^18.7.18",
     "bumpp": "^8.2.1",
-    "diff-match-patch-typescript": "^1.0.8",
     "eslint": "^8.23.1",
     "esno": "^0.16.3",
     "pnpm": "^7.12.0",
