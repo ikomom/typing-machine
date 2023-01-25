@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { calculatePatches, createAnimator, diffString } from '../src'
+import { calculatePatches, createAnimator, diffString } from '../packages/core/src'
 import { input, output } from './fixture'
 
 describe('animator', () => {
