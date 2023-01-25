@@ -1,0 +1,956 @@
+// Vitest Snapshot v1
+
+exports[`animator > generate > animator 1`] = `
+[
+  {
+    "cursor": 71,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} from './one'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-start",
+  },
+  {
+    "cursor": 71,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} from './one'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 70,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} from './one
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 69,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} from './on
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 68,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} from './o
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 67,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} from './
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 66,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} from '.
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 65,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} from '
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 64,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} from 
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 63,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} from
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 62,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} fro
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 61,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} fr
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 60,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} f
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 59,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll} 
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 58,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll}
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 57,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {ll
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 56,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {l
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 55,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import {
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 54,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import 
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 53,
+    "output": "
+import { describe, expect, it } from 'vitest'
+import
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 52,
+    "output": "
+import { describe, expect, it } from 'vitest'
+impor
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 51,
+    "output": "
+import { describe, expect, it } from 'vitest'
+impo
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 50,
+    "output": "
+import { describe, expect, it } from 'vitest'
+imp
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 49,
+    "output": "
+import { describe, expect, it } from 'vitest'
+im
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 48,
+    "output": "
+import { describe, expect, it } from 'vitest'
+i
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 47,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 46,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 71,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-end",
+  },
+  {
+    "cursor": 138,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-start",
+  },
+  {
+    "cursor": 138,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 137,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 136,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hell)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 135,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hel)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 134,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('he)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 133,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('h)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 132,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log(')
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 131,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log()
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 130,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 129,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.lo)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 128,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.l)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 127,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 126,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 125,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    consol)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 124,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    conso)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 123,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    cons)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 122,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    con)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 121,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    co)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 120,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    c)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 119,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    )
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 118,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+   )
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 117,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+  )
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 116,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+ )
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 115,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+)
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 114,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33))
+  })
+})
+",
+    "type": "removal-ing",
+  },
+  {
+    "cursor": 138,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33))
+  })
+})
+",
+    "type": "removal-end",
+  },
+  {
+    "cursor": 114,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33))
+  })
+})
+",
+    "type": "insert-start",
+  },
+  {
+    "cursor": 115,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33).)
+  })
+})
+",
+    "type": "insert-ing",
+  },
+  {
+    "cursor": 116,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33).t)
+  })
+})
+",
+    "type": "insert-ing",
+  },
+  {
+    "cursor": 117,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33).to)
+  })
+})
+",
+    "type": "insert-ing",
+  },
+  {
+    "cursor": 118,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33).toE)
+  })
+})
+",
+    "type": "insert-ing",
+  },
+  {
+    "cursor": 119,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33).toEq)
+  })
+})
+",
+    "type": "insert-ing",
+  },
+  {
+    "cursor": 120,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33).toEqu)
+  })
+})
+",
+    "type": "insert-ing",
+  },
+  {
+    "cursor": 121,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33).toEqua)
+  })
+})
+",
+    "type": "insert-ing",
+  },
+  {
+    "cursor": 122,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33).toEqual)
+  })
+})
+",
+    "type": "insert-ing",
+  },
+  {
+    "cursor": 123,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33).toEqual()
+  })
+})
+",
+    "type": "insert-ing",
+  },
+  {
+    "cursor": 124,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33).toEqual(1)
+  })
+})
+",
+    "type": "insert-ing",
+  },
+  {
+    "cursor": 114,
+    "output": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33).toEqual(1)
+  })
+})
+",
+    "type": "insert-end",
+  },
+]
+`;

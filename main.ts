@@ -1,7 +1,5 @@
-import _TypeIt from 'typeit'
-import { calculatePatches, diffString } from './src'
+import { calculatePatches, createAnimator, diffString } from './src'
 
-const TypeIt = _TypeIt as any
 let input = `
 import { describe, expect, it } from 'vitest'
 import {ll} from './one'
@@ -26,6 +24,8 @@ describe('should', () => {
 const typingEl = document.getElementById('typing') as HTMLPreElement
 const inputEl = document.getElementById('input') as HTMLTextAreaElement
 const outputEl = document.getElementById('output') as HTMLTextAreaElement
+const startBtn = document.getElementById('btn-start') as HTMLButtonElement
+const resetBtn = document.getElementById('btn-reset') as HTMLButtonElement
 
 inputEl.value = input
 outputEl.value = output
@@ -36,48 +36,32 @@ inputEl.addEventListener('input', () => {
 
 outputEl.addEventListener('input', () => {
   output = outputEl.value
-});
+})
 
-(document.getElementById('btn-start') as HTMLButtonElement).addEventListener('click', () => start());
-(document.getElementById('btn-reset') as HTMLButtonElement).addEventListener('click', () => reset())
+startBtn.addEventListener('click', async () => {
+  startBtn.disabled = true
+  await start()
+  startBtn.disabled = false
+})
+resetBtn.addEventListener('click', () => reset())
 
-let typeit: any
-function reset() {
-  if (typeit) {
-    typeit.reset()
-    typeit = null
-  }
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-function start() {
+function reset() {
+
+}
+
+async function start() {
   reset()
-
-  const delta = diffString(input, output)
+  const _input = input
+  const delta = diffString(_input, output)
   const patches = calculatePatches(delta)
+  const animator = createAnimator(_input, patches)
 
-  typeit = new TypeIt(typingEl, {
-    speed: 50,
-  })
-
-  typeit.type(input, { instant: true })
-
-  for (const patch of patches) {
-    if (patch.type === 'insert') {
-      typeit
-        .move(null, { to: 'START', instant: true })
-        .move(patch.from, { instant: true })
-        .type(patch.text)
-    }
-
-    else if (patch.type === 'removal') {
-      typeit
-        .move(null, { to: 'START', instant: true })
-        .move(patch.from + patch.length, { instant: true })
-        .delete(patch.length)
-    }
+  for (const result of animator) {
+    typingEl.textContent = result.output
+    await sleep(Math.random() * 100)
   }
-
-  typeit
-    .move(null, { to: 'END', instant: false })
-    .go()
 }

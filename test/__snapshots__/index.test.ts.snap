@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`should > diff > delta 1`] = `
+exports[`index > diff > delta 1`] = `
 [
   [
     0,
@@ -39,7 +39,7 @@ describe('should', () => {
 ]
 `;
 
-exports[`should > diff > output 1`] = `
+exports[`index > diff > output 1`] = `
 "
 import { describe, expect, it } from 'vitest'
 
@@ -51,7 +51,7 @@ describe('should', () => {
 "
 `;
 
-exports[`should > diff > patches 1`] = `
+exports[`index > diff > patches 1`] = `
 [
   {
     "from": 46,
