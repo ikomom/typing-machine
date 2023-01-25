@@ -1,6 +1,7 @@
 {
   "name": "@ik-typing-machine/monorepo",
   "private": true,
+  "packageManager": "pnpm@7.12.0",
   "scripts": {
     "build": "pnpm -r run build",
     "dev": "pnpm -r run dev",
