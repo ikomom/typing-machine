@@ -44,7 +44,7 @@
     "start": "esno src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "vite-dev": "vite"
+    "vite-dev": "vite playground"
   },
   "dependencies": {
     "magic-string": "^0.27.0"

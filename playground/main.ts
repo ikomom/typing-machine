@@ -1,4 +1,4 @@
-import { calculatePatches, createAnimator, diffString } from './src'
+import { calculatePatches, createAnimator, diffString } from '../src/core'
 
 let input = `
 import { describe, expect, it } from 'vitest'
