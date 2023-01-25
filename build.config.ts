@@ -6,7 +6,11 @@ export default defineBuildConfig({
   ],
   declaration: true,
   clean: true,
+  externals: [
+    'diff-match-patch-typescript',
+  ],
   rollup: {
     emitCJS: true,
+    inlineDependencies: true,
   },
 })

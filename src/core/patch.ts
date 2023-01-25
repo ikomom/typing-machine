@@ -1,5 +1,5 @@
-import type { Diff } from 'diff-match-patch-typescript'
 import { DiffMatchPatch, DiffOperation } from 'diff-match-patch-typescript'
+import type { Diff } from 'diff-match-patch-typescript'
 import type { Patch } from './types'
 
 export function calculatePatches(diffs: Diff[]): Patch[] {
@@ -17,9 +17,6 @@ export function calculatePatches(diffs: Diff[]): Patch[] {
         type: 'removal',
         from: cursor,
         length: offset,
-        // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // // @ts-expect-error
-        // text, // TODO: 测试用, 待移除
       })
       // 删除时，游标还是一样，所以不用移动，一下代码不用
       // cursor -= offset
