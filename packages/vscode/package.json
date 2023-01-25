@@ -1,8 +1,8 @@
 {
+  "publisher": "ikomom",
   "name": "ik-typing-machine",
-  "type": "module",
+  "displayName": "ik Typing Machine",
   "version": "0.0.0",
-  "packageManager": "pnpm@7.12.0",
   "description": "",
   "author": "Ikomom <ikonon557@gmail.com>",
   "license": "MIT",
@@ -10,15 +10,69 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ikomom/typing-machine.git",
-    "directory": "packages/vscode"
+    "directory": "packages/core"
   },
   "bugs": "https://github.com/ikomom/typing-machine/issues",
-  "sideEffects": false,
-  "files": [
-    "dist"
+  "categories": [
+    "Other"
   ],
+  "main": "./dist/index.js",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "ik-typing-machine.snap",
+        "title": "Take snapshot of current file",
+        "category": "ikTypingMachine",
+        "icon": "$(diff-added)"
+      },
+      {
+        "command": "ik-typing-machine.play",
+        "title": "Play ikTypingMachine",
+        "category": "ikTypingMachine",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ik-typing-machine.clear",
+        "title": "Clear ikTypingMachine",
+        "category": "ikTypingMachine",
+        "icon": "$(trash)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "ik-typing-machine.snap",
+          "group": "navigation@1170"
+        },
+        {
+          "command": "ik-typing-machine.play",
+          "group": "navigation@1170"
+        },
+        {
+          "command": "ik-typing-machine.clear",
+          "group": "navigation@1170"
+        }
+      ]
+    }
+  },
   "scripts": {
-    "build": "echo build",
-    "dev": "echo dev"
+    "build": "tsup src/index.ts --external vscode",
+    "dev": "nr build --watch",
+    "vscode:prepublish": "nr build",
+    "publish": "vsce publish --no-dependencies",
+    "pack": "vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "ik-typing-machine": "workspace:../core"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "tsup": "^6.5.0"
   }
 }

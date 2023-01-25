@@ -8,7 +8,8 @@
     "release": "bumpp package.json packages/*/package.json && pnpm -r publish --access public --no-git-checks && pnpm -r run publish",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "play": "vite playground"
+    "play": "vite playground",
+    "vscode": "nr -C packages/vscode dev"
   },
   "dependencies": {
     "diff-match-patch-typescript": "^1.0.8",
