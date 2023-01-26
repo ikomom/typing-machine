@@ -36,12 +36,6 @@
         "title": "Play ikTypingMachine",
         "category": "ikTypingMachine",
         "icon": "$(play)"
-      },
-      {
-        "command": "ik-typing-machine.clear",
-        "title": "Clear ikTypingMachine",
-        "category": "ikTypingMachine",
-        "icon": "$(trash)"
       }
     ],
     "menus": {
@@ -52,10 +46,6 @@
         },
         {
           "command": "ik-typing-machine.play",
-          "group": "navigation@1170"
-        },
-        {
-          "command": "ik-typing-machine.clear",
           "group": "navigation@1170"
         }
       ]

@@ -7,7 +7,7 @@ export const SNAP_SEPARATOR = `${SNAP_SEPARATOR_PRE}--${SNAP_SEPARATOR_SUFFIX}`
 export const SNAP_SEPARATOR_MATCHER = new RegExp(`\\n?${SNAP_SEPARATOR_PRE}[#\\w-]*${SNAP_SEPARATOR_SUFFIX}\\n`, 'g')
 
 /**
- * 快照
+ * Snapshot store
  */
 export class Snapshots extends Array<Snapshot> {
   constructor(...props: Snapshot[]) {
@@ -57,5 +57,30 @@ export class Snapshots extends Array<Snapshot> {
     }
 
     return new Snapshots(...snapshots)
+  }
+}
+
+export type SnapshotFallbackLoader = (id: string) => Snapshots | undefined | Promise<Snapshots | undefined>
+export interface SnapshotManagerOptions {
+  ensureFallback?: SnapshotFallbackLoader
+}
+
+export class SnapshotManager extends Map<string, Snapshots> {
+  constructor(
+    public options: SnapshotManagerOptions,
+  ) {
+    super()
+  }
+
+  /**
+   * set snapshot by id, if no present, read load callback or create new snapshot
+   * @param id
+   * @param load
+   */
+  async ensure(id: string, load = this.options.ensureFallback) {
+    if (!this.has(id))
+      this.set(id, await load?.(id) || new Snapshots())
+
+    return this.get(id)!
   }
 }

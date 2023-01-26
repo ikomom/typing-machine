@@ -1,33 +1,66 @@
-import { Range, Selection, commands, window } from 'vscode'
-import { simpleAnimator } from 'ik-typing-machine'
+import { existsSync, promises as fs } from 'fs'
+import { Range, Selection, commands, window, workspace } from 'vscode'
+import { SnapshotManager, Snapshots, simpleAnimator } from 'ik-typing-machine'
+import { logOut } from './log'
 
-interface SnapShot {
-  content: string
-  time: number
-}
+const snapExt = '.typingmachine'
+// const snapExt = '.ts'
 
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
+function getSnapPath(id: string) {
+  return id + snapExt
+}
+
+async function writeSnapshots(path: string, snap: Snapshots) {
+  const filepath = getSnapPath(path)
+  await fs.writeFile(filepath, snap.toString(), 'utf-8')
+}
 
 export function activate() {
-  const snapMap = new Map<string, SnapShot[]>()
+  logOut('active plugin')
 
-  commands.registerCommand('ik-typing-machine.snap', () => {
+  const manager = new SnapshotManager({
+    // if old snapshot file exist, read it
+    async ensureFallback(path: string) {
+      const filepath = getSnapPath(path)
+      if (existsSync(filepath)) {
+        const content = await fs.readFile(filepath, 'utf-8')
+        const snaps = Snapshots.fromString(content)
+        window.showInformationMessage('Snapshots loaded from file')
+        return snaps
+      }
+    },
+  })
+
+  const wacther = workspace.createFileSystemWatcher(`**/*${snapExt}`)
+  // const wacther = workspace.createFileSystemWatcher('**/*.ts')
+  // delete old snaps when recreate or rename file
+  wacther.onDidCreate((uri) => {
+    logOut('File:onDidCreate', uri)
+    manager.delete(uri.path.replace(snapExt, ''))
+  })
+  wacther.onDidChange((uri) => {
+    logOut('File:onDidChange', uri)
+  })
+
+  commands.registerCommand('ik-typing-machine.snap', async () => {
     const doc = window.activeTextEditor?.document
     if (!doc) {
       window.showWarningMessage('document not open')
       return
     }
     const path = doc.uri.fsPath
-    if (!snapMap.has(path))
-      snapMap.set(path, [])
-    const snaps = snapMap.get(path)
-    snaps!.push({
+    const snaps = await manager.ensure(path)
+    snaps.push({
       content: doc.getText(),
-      time: Date.now(),
     })
-    window.showInformationMessage(`succeed take ${snaps!.length} snapShot of ${doc.fileName}`)
+    logOut('snap', { path, snaps })
+
+    await writeSnapshots(path, snaps)
+
+    window.showInformationMessage(`succeed take ${snaps.length} snapShot of ${doc.fileName}`)
   })
 
   commands.registerCommand('ik-typing-machine.play', async () => {
@@ -37,19 +70,30 @@ export function activate() {
       window.showWarningMessage('document not open')
       return
     }
-    const snaps = snapMap.get(doc.uri.fsPath)
-    if (!snaps?.length) {
+    const snaps = await manager.ensure(doc.uri.fsPath)
+    if (!snaps.length) {
       window.showWarningMessage('No snaps found')
       return
     }
     // compare lastSnap with current doc
     const lastSnap = snaps[snaps.length - 1]
     if (lastSnap.content !== doc.getText()) {
-      snaps.push({
-        content: doc.getText(),
-        time: Date.now(),
-      })
-      window.showInformationMessage('Add new last snap')
+      const take = 'Take Snapshot'
+      const discard = 'Discard'
+      const cancel = 'Cancel'
+
+      const result = await window.showInformationMessage(
+        'The current document has been modified since last snapshot. Do you want take another snapshot?',
+        { modal: true },
+        take,
+        discard,
+        cancel,
+      )
+      if (!result || result === cancel)
+        return
+
+      if (result === take)
+        await commands.executeCommand('ik-typing-machine.snap')
     }
     window.showInformationMessage(`Playing ${doc.fileName}`)
 
@@ -86,18 +130,8 @@ export function activate() {
 
     window.showInformationMessage(`Finished ${doc.fileName}`)
   })
-
-  commands.registerCommand('ik-typing-machine.clear', () => {
-    const editor = window.activeTextEditor
-    const doc = editor?.document
-    if (!doc || !editor) {
-      window.showWarningMessage('document not open')
-      return
-    }
-    snapMap.delete(doc.uri.fsPath)
-    window.showInformationMessage(`success clear ${doc.fileName}`)
-  })
 }
 
 export function deactivate() {
+  logOut('deactivate plugin')
 }
