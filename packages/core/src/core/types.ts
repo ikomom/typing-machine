@@ -21,3 +21,13 @@ export interface AnimatorStep {
   patch: Patch
   patchIndex: number
 }
+
+export interface Snapshot {
+  content: string
+  options?: SnapshotOptions
+}
+
+export interface SnapshotOptions {
+  // 等待时间
+  wait?: number
+}

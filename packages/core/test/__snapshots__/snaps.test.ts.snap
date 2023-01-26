@@ -1,0 +1,29 @@
+// Vitest Snapshot v1
+
+exports[`snaps > persist > serialized 1`] = `
+"ik-typing-machine Snapshots v1
+
+--01----------
+
+--------------
+{
+  \\"wait\\": 200
+}
+--02----------
+import {} from \\"vue\\"
+--------------
+{
+  \\"wait\\": 100
+}
+--03----------
+import { createApp } from \\"vue\\"
+
+const app = createApp()
+
+--------------
+{
+  \\"wait\\": 100
+}
+--------------
+"
+`;

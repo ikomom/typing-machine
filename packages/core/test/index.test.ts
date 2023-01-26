@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { applyPatches, calculatePatches, diffString } from '../packages/core/src'
+import { applyPatches, calculatePatches, diffString } from '../src'
 import { input, output } from './fixture'
 
 describe('index', () => {
