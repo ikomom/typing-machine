@@ -5,8 +5,8 @@ import { Snapshots } from '../src'
 describe('snaps', () => {
   it('persist', () => {
     const data: Snapshot[] = [
-      { content: '', options: { wait: 200 } },
-      { content: 'import {} from "vue"', options: { wait: 100 } },
+      { content: '', options: { wait: 200, pause: false } },
+      { content: 'import {} from "vue"' },
       { content: 'import { createApp } from "vue"\n\nconst app = createApp()\n', options: { wait: 100 } },
     ]
 

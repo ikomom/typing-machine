@@ -4,8 +4,10 @@ import type { AnimatorStep, Snapshot } from './types'
 export const SNAP_HEADING = 'ik-typing-machine Snapshots v1\n'
 export const SNAP_SEPARATOR_PRE = '-'.repeat(2)
 export const SNAP_SEPARATOR_SUFFIX = '-'.repeat(10)
+export const SNAP_SEPARATOR_OPTIONS = '----OPTIONS----'
 export const SNAP_SEPARATOR = `${SNAP_SEPARATOR_PRE}--${SNAP_SEPARATOR_SUFFIX}`
 export const SNAP_SEPARATOR_MATCHER = new RegExp(`\\n?${SNAP_SEPARATOR_PRE}[#\\w-]*${SNAP_SEPARATOR_SUFFIX}\\n`, 'g')
+export const SNAP_SEPARATOR_MATCHER_OPTIONS = new RegExp(`\\n?${SNAP_SEPARATOR_OPTIONS}`, 'g')
 
 /**
  * Snapshot store
@@ -31,7 +33,11 @@ export class Snapshots extends Array<Snapshot> {
           `${SNAP_SEPARATOR_PRE + String(i + 1).padStart(2, '0') + SNAP_SEPARATOR_SUFFIX}`,
           snap.content,
           SNAP_SEPARATOR,
-          snap.options ? JSON.stringify(snap.options, null, 2) : undefined,
+          ...(snap.options
+            ? [
+                SNAP_SEPARATOR_OPTIONS,
+                JSON.stringify(snap.options, null, 2)]
+            : []),
         ].filter(i => i !== undefined)
       }),
       SNAP_SEPARATOR,
@@ -52,7 +58,7 @@ export class Snapshots extends Array<Snapshot> {
       const optionsRaw = parts[i + 1].trim()
 
       if (optionsRaw)
-        snap.options = JSON.parse(optionsRaw)
+        snap.options = JSON.parse(optionsRaw.split(SNAP_SEPARATOR_MATCHER_OPTIONS)[1])
 
       snapshots.push(snap)
     }

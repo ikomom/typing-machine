@@ -6,21 +6,21 @@ exports[`snaps > persist > serialized 1`] = `
 --01----------
 
 --------------
+----OPTIONS----
 {
-  \\"wait\\": 200
+  \\"wait\\": 200,
+  \\"pause\\": false
 }
 --02----------
 import {} from \\"vue\\"
 --------------
-{
-  \\"wait\\": 100
-}
 --03----------
 import { createApp } from \\"vue\\"
 
 const app = createApp()
 
 --------------
+----OPTIONS----
 {
   \\"wait\\": 100
 }

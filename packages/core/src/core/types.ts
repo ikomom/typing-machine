@@ -57,4 +57,5 @@ export interface Snapshot {
 export interface SnapshotOptions {
   // 等待时间
   wait?: number
+  pause?: boolean
 }

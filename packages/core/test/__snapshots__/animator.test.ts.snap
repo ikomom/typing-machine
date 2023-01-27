@@ -3,8 +3,16 @@
 exports[`animator > generate > animator 1`] = `
 [
   {
-    "cursor": 71,
-    "output": "
+    "index": 0,
+    "patch": {
+      "from": 46,
+      "length": 25,
+      "type": "removal",
+    },
+    "type": "new-patch",
+  },
+  {
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from './one'
 
@@ -15,17 +23,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 0,
+    "cursor": 71,
     "type": "removal-start",
   },
   {
-    "cursor": 70,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from './one
 
@@ -36,17 +38,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 24,
-    "type": "removal-ing",
+    "cursor": 70,
+    "type": "removal",
   },
   {
-    "cursor": 69,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from './on
 
@@ -57,17 +53,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 23,
-    "type": "removal-ing",
+    "cursor": 69,
+    "type": "removal",
   },
   {
-    "cursor": 68,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from './o
 
@@ -78,17 +68,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 22,
-    "type": "removal-ing",
+    "cursor": 68,
+    "type": "removal",
   },
   {
-    "cursor": 67,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from './
 
@@ -99,17 +83,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 21,
-    "type": "removal-ing",
+    "cursor": 67,
+    "type": "removal",
   },
   {
-    "cursor": 66,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from '.
 
@@ -120,17 +98,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 20,
-    "type": "removal-ing",
+    "cursor": 66,
+    "type": "removal",
   },
   {
-    "cursor": 65,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from '
 
@@ -141,17 +113,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 19,
-    "type": "removal-ing",
+    "cursor": 65,
+    "type": "removal",
   },
   {
-    "cursor": 64,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from 
 
@@ -162,17 +128,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 18,
-    "type": "removal-ing",
+    "cursor": 64,
+    "type": "removal",
   },
   {
-    "cursor": 63,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from
 
@@ -183,17 +143,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 17,
-    "type": "removal-ing",
+    "cursor": 63,
+    "type": "removal",
   },
   {
-    "cursor": 62,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} fro
 
@@ -204,17 +158,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 16,
-    "type": "removal-ing",
+    "cursor": 62,
+    "type": "removal",
   },
   {
-    "cursor": 61,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} fr
 
@@ -225,17 +173,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 15,
-    "type": "removal-ing",
+    "cursor": 61,
+    "type": "removal",
   },
   {
-    "cursor": 60,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} f
 
@@ -246,17 +188,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 14,
-    "type": "removal-ing",
+    "cursor": 60,
+    "type": "removal",
   },
   {
-    "cursor": 59,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} 
 
@@ -267,17 +203,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 13,
-    "type": "removal-ing",
+    "cursor": 59,
+    "type": "removal",
   },
   {
-    "cursor": 58,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll}
 
@@ -288,17 +218,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 12,
-    "type": "removal-ing",
+    "cursor": 58,
+    "type": "removal",
   },
   {
-    "cursor": 57,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {ll
 
@@ -309,17 +233,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 11,
-    "type": "removal-ing",
+    "cursor": 57,
+    "type": "removal",
   },
   {
-    "cursor": 56,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {l
 
@@ -330,17 +248,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 10,
-    "type": "removal-ing",
+    "cursor": 56,
+    "type": "removal",
   },
   {
-    "cursor": 55,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import {
 
@@ -351,17 +263,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 9,
-    "type": "removal-ing",
+    "cursor": 55,
+    "type": "removal",
   },
   {
-    "cursor": 54,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import 
 
@@ -372,17 +278,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 8,
-    "type": "removal-ing",
+    "cursor": 54,
+    "type": "removal",
   },
   {
-    "cursor": 53,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 import
 
@@ -393,17 +293,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 7,
-    "type": "removal-ing",
+    "cursor": 53,
+    "type": "removal",
   },
   {
-    "cursor": 52,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 impor
 
@@ -414,17 +308,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 6,
-    "type": "removal-ing",
+    "cursor": 52,
+    "type": "removal",
   },
   {
-    "cursor": 51,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 impo
 
@@ -435,17 +323,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 5,
-    "type": "removal-ing",
+    "cursor": 51,
+    "type": "removal",
   },
   {
-    "cursor": 50,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 imp
 
@@ -456,17 +338,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 4,
-    "type": "removal-ing",
+    "cursor": 50,
+    "type": "removal",
   },
   {
-    "cursor": 49,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 im
 
@@ -477,17 +353,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 3,
-    "type": "removal-ing",
+    "cursor": 49,
+    "type": "removal",
   },
   {
-    "cursor": 48,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 i
 
@@ -498,19 +368,27 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 2,
-    "type": "removal-ing",
+    "cursor": 48,
+    "type": "removal",
   },
   {
+    "content": "
+import { describe, expect, it } from 'vitest'
+
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
     "cursor": 47,
-    "output": "
+    "type": "removal",
+  },
+  {
+    "content": "
 import { describe, expect, it } from 'vitest'
-
 
 describe('should', () => {
   it('exported', () => {
@@ -519,37 +397,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 1,
-    "type": "removal-ing",
-  },
-  {
     "cursor": 46,
-    "output": "
-import { describe, expect, it } from 'vitest'
-
-describe('should', () => {
-  it('exported', () => {
-    expect(33)
-    console.log('hello')
-  })
-})
-",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 0,
-    "type": "removal-ing",
+    "type": "removal",
   },
   {
-    "cursor": 71,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -559,37 +411,34 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 46,
-      "length": 25,
-      "type": "removal",
-    },
-    "patchIndex": 0,
+    "cursor": 71,
     "type": "removal-end",
   },
   {
-    "cursor": 138,
-    "output": "
-import { describe, expect, it } from 'vitest'
-
-describe('should', () => {
-  it('exported', () => {
-    expect(33)
-    console.log('hello')
-  })
-})
-",
+    "index": 1,
     "patch": {
       "from": 114,
       "length": 24,
       "type": "removal",
     },
-    "patchIndex": 1,
+    "type": "new-patch",
+  },
+  {
+    "content": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "cursor": 138,
     "type": "removal-start",
   },
   {
-    "cursor": 137,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -599,17 +448,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 23,
-    "type": "removal-ing",
+    "cursor": 137,
+    "type": "removal",
   },
   {
-    "cursor": 136,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -619,17 +462,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 22,
-    "type": "removal-ing",
+    "cursor": 136,
+    "type": "removal",
   },
   {
-    "cursor": 135,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -639,17 +476,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 21,
-    "type": "removal-ing",
+    "cursor": 135,
+    "type": "removal",
   },
   {
-    "cursor": 134,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -659,17 +490,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 20,
-    "type": "removal-ing",
+    "cursor": 134,
+    "type": "removal",
   },
   {
-    "cursor": 133,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -679,17 +504,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 19,
-    "type": "removal-ing",
+    "cursor": 133,
+    "type": "removal",
   },
   {
-    "cursor": 132,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -699,17 +518,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 18,
-    "type": "removal-ing",
+    "cursor": 132,
+    "type": "removal",
   },
   {
-    "cursor": 131,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -719,17 +532,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 17,
-    "type": "removal-ing",
+    "cursor": 131,
+    "type": "removal",
   },
   {
-    "cursor": 130,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -739,17 +546,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 16,
-    "type": "removal-ing",
+    "cursor": 130,
+    "type": "removal",
   },
   {
-    "cursor": 129,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -759,17 +560,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 15,
-    "type": "removal-ing",
+    "cursor": 129,
+    "type": "removal",
   },
   {
-    "cursor": 128,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -779,17 +574,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 14,
-    "type": "removal-ing",
+    "cursor": 128,
+    "type": "removal",
   },
   {
-    "cursor": 127,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -799,17 +588,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 13,
-    "type": "removal-ing",
+    "cursor": 127,
+    "type": "removal",
   },
   {
-    "cursor": 126,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -819,17 +602,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 12,
-    "type": "removal-ing",
+    "cursor": 126,
+    "type": "removal",
   },
   {
-    "cursor": 125,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -839,17 +616,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 11,
-    "type": "removal-ing",
+    "cursor": 125,
+    "type": "removal",
   },
   {
-    "cursor": 124,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -859,17 +630,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 10,
-    "type": "removal-ing",
+    "cursor": 124,
+    "type": "removal",
   },
   {
-    "cursor": 123,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -879,17 +644,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 9,
-    "type": "removal-ing",
+    "cursor": 123,
+    "type": "removal",
   },
   {
-    "cursor": 122,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -899,17 +658,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 8,
-    "type": "removal-ing",
+    "cursor": 122,
+    "type": "removal",
   },
   {
-    "cursor": 121,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -919,17 +672,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 7,
-    "type": "removal-ing",
+    "cursor": 121,
+    "type": "removal",
   },
   {
-    "cursor": 120,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -939,17 +686,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 6,
-    "type": "removal-ing",
+    "cursor": 120,
+    "type": "removal",
   },
   {
-    "cursor": 119,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -959,17 +700,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 5,
-    "type": "removal-ing",
+    "cursor": 119,
+    "type": "removal",
   },
   {
-    "cursor": 118,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -979,17 +714,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 4,
-    "type": "removal-ing",
+    "cursor": 118,
+    "type": "removal",
   },
   {
-    "cursor": 117,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -999,17 +728,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 3,
-    "type": "removal-ing",
+    "cursor": 117,
+    "type": "removal",
   },
   {
-    "cursor": 116,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1019,17 +742,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 2,
-    "type": "removal-ing",
+    "cursor": 116,
+    "type": "removal",
   },
   {
-    "cursor": 115,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1039,36 +756,24 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 1,
-    "type": "removal-ing",
+    "cursor": 115,
+    "type": "removal",
   },
   {
+    "content": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33))
+  })
+})
+",
     "cursor": 114,
-    "output": "
-import { describe, expect, it } from 'vitest'
-
-describe('should', () => {
-  it('exported', () => {
-    expect(33))
-  })
-})
-",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 0,
-    "type": "removal-ing",
+    "type": "removal",
   },
   {
-    "cursor": 138,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1077,37 +782,34 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "length": 24,
-      "type": "removal",
-    },
-    "patchIndex": 1,
+    "cursor": 138,
     "type": "removal-end",
   },
   {
-    "cursor": 114,
-    "output": "
-import { describe, expect, it } from 'vitest'
-
-describe('should', () => {
-  it('exported', () => {
-    expect(33))
-  })
-})
-",
+    "index": 2,
     "patch": {
       "from": 114,
       "text": ".toEqual(1",
       "type": "insert",
     },
-    "patchIndex": 2,
+    "type": "new-patch",
+  },
+  {
+    "content": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33))
+  })
+})
+",
+    "cursor": 114,
     "type": "insert-start",
   },
   {
     "char": ".",
-    "cursor": 115,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1116,18 +818,12 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "text": ".toEqual(1",
-      "type": "insert",
-    },
-    "patchIndex": 2,
-    "type": "insert-ing",
+    "cursor": 115,
+    "type": "insert",
   },
   {
     "char": "t",
-    "cursor": 116,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1136,18 +832,12 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "text": ".toEqual(1",
-      "type": "insert",
-    },
-    "patchIndex": 2,
-    "type": "insert-ing",
+    "cursor": 116,
+    "type": "insert",
   },
   {
     "char": "o",
-    "cursor": 117,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1156,18 +846,12 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "text": ".toEqual(1",
-      "type": "insert",
-    },
-    "patchIndex": 2,
-    "type": "insert-ing",
+    "cursor": 117,
+    "type": "insert",
   },
   {
     "char": "E",
-    "cursor": 118,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1176,18 +860,12 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "text": ".toEqual(1",
-      "type": "insert",
-    },
-    "patchIndex": 2,
-    "type": "insert-ing",
+    "cursor": 118,
+    "type": "insert",
   },
   {
     "char": "q",
-    "cursor": 119,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1196,18 +874,12 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "text": ".toEqual(1",
-      "type": "insert",
-    },
-    "patchIndex": 2,
-    "type": "insert-ing",
+    "cursor": 119,
+    "type": "insert",
   },
   {
     "char": "u",
-    "cursor": 120,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1216,18 +888,12 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "text": ".toEqual(1",
-      "type": "insert",
-    },
-    "patchIndex": 2,
-    "type": "insert-ing",
+    "cursor": 120,
+    "type": "insert",
   },
   {
     "char": "a",
-    "cursor": 121,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1236,18 +902,12 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "text": ".toEqual(1",
-      "type": "insert",
-    },
-    "patchIndex": 2,
-    "type": "insert-ing",
+    "cursor": 121,
+    "type": "insert",
   },
   {
     "char": "l",
-    "cursor": 122,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1256,18 +916,12 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "text": ".toEqual(1",
-      "type": "insert",
-    },
-    "patchIndex": 2,
-    "type": "insert-ing",
+    "cursor": 122,
+    "type": "insert",
   },
   {
     "char": "(",
-    "cursor": 123,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1276,18 +930,12 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "text": ".toEqual(1",
-      "type": "insert",
-    },
-    "patchIndex": 2,
-    "type": "insert-ing",
+    "cursor": 123,
+    "type": "insert",
   },
   {
     "char": "1",
-    "cursor": 124,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1296,17 +944,11 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "text": ".toEqual(1",
-      "type": "insert",
-    },
-    "patchIndex": 2,
-    "type": "insert-ing",
+    "cursor": 124,
+    "type": "insert",
   },
   {
-    "cursor": 114,
-    "output": "
+    "content": "
 import { describe, expect, it } from 'vitest'
 
 describe('should', () => {
@@ -1315,12 +957,7 @@ describe('should', () => {
   })
 })
 ",
-    "patch": {
-      "from": 114,
-      "text": ".toEqual(1",
-      "type": "insert",
-    },
-    "patchIndex": 2,
+    "cursor": 114,
     "type": "insert-end",
   },
 ]
