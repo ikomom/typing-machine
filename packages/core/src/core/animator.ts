@@ -2,57 +2,53 @@ import { calculatePatches, diffString } from './index'
 import type { AnimatorStep, Patch } from './index'
 
 export function* createAnimator(input: string, patches: Patch[]): Generator<AnimatorStep> {
-  let output = input
+  let content = input
   // 当前游标
   let cursor = 0
   // 每次只关注添加、删除的位置, 并且拼接起来
-  for (let i = 0; i < patches.length; i++) {
-    const patch = patches[i]
-    const head = output.slice(0, patch.from)
+  for (let index = 0; index < patches.length; index++) {
+    const patch = patches[index]
+    const head = content.slice(0, patch.from)
+
+    yield { type: 'new-patch', patch, index }
 
     if (patch.type === 'insert') {
       // 光标从头部插入
       cursor = patch.from
-      const tail = output.slice(patch.from)
+      const tail = content.slice(patch.from)
       // 模拟动画过程
       let selection = ''
-      yield { type: 'insert-start', cursor, output, patch, patchIndex: i }
+      yield { type: 'insert-start', cursor, content }
       for (const char of patch.text) {
         selection += char
         yield {
-          type: 'insert-ing',
+          type: 'insert',
           cursor: cursor + selection.length,
-          output: head + selection + tail,
+          content: head + selection + tail,
           char,
-          patch,
-          patchIndex: i,
         }
       }
-      output = head + patch.text + tail
-      yield { type: 'insert-end', cursor, output, patch, patchIndex: i }
+      content = head + patch.text + tail
+      yield { type: 'insert-end', cursor, content }
     }
     else if (patch.type === 'removal') {
       // 光标从尾部开始减小
       cursor = patch.from + patch.length
-      const tail = output.slice(patch.from + patch.length)
-      const selection = output.slice(patch.from, patch.from + patch.length)
-      yield { type: 'removal-start', cursor, output, patch, patchIndex: i }
+      const tail = content.slice(patch.from + patch.length)
+      const selection = content.slice(patch.from, patch.from + patch.length)
+      yield { type: 'removal-start', cursor, content }
 
       for (let i = selection.length - 1; i >= 0; i--) {
         yield {
-          type: 'removal-ing',
+          type: 'removal',
           cursor: cursor - (selection.length - i),
-          output: head + selection.slice(0, i) + tail,
-          patch,
-          patchIndex: i,
+          content: head + selection.slice(0, i) + tail,
         }
       }
-      output = head + tail
-      yield { type: 'removal-end', cursor, output, patch, patchIndex: i }
+      content = head + tail
+      yield { type: 'removal-end', cursor, content }
     }
   }
-
-  return { type: 'finish', cursor, output }
 }
 
 export function simpleAnimator(input: string, output: string) {

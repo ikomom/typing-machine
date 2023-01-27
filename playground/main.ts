@@ -1,4 +1,4 @@
-import { calculatePatches, createAnimator, diffString } from '../packages/core/src'
+// import { calculatePatches, createAnimator, diffString } from '../packages/core/src'
 
 let input = `
 import { describe, expect, it } from 'vitest'
@@ -21,7 +21,7 @@ describe('should', () => {
 })
 `
 
-const typingEl = document.getElementById('typing') as HTMLPreElement
+// const typingEl = document.getElementById('typing') as HTMLPreElement
 const inputEl = document.getElementById('input') as HTMLTextAreaElement
 const outputEl = document.getElementById('output') as HTMLTextAreaElement
 const startBtn = document.getElementById('btn-start') as HTMLButtonElement
@@ -45,9 +45,9 @@ startBtn.addEventListener('click', async () => {
 })
 resetBtn.addEventListener('click', () => reset())
 
-function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
+// function sleep(ms: number) {
+//   return new Promise(resolve => setTimeout(resolve, ms))
+// }
 
 function reset() {
 
@@ -55,13 +55,13 @@ function reset() {
 
 async function start() {
   reset()
-  const _input = input
-  const delta = diffString(_input, output)
-  const patches = calculatePatches(delta)
-  const animator = createAnimator(_input, patches)
+  // const _input = input
+  // const delta = diffString(_input, output)
+  // const patches = calculatePatches(delta)
+  // const animator = createAnimator(_input, patches)
 
-  for (const result of animator) {
-    typingEl.textContent = result.output
-    await sleep(Math.random() * 100)
-  }
+  // for (const result of animator) {
+  // typingEl.textContent = result.content
+  // await sleep(Math.random() * 100)
+  // }
 }

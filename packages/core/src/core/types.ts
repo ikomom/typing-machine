@@ -13,14 +13,41 @@ export interface RemovalPatch {
 
 export type Patch = InsertPatch | RemovalPatch
 
-export interface AnimatorStep {
-  type: string
+export interface AnimatorStepInsert {
+  type: 'insert'
   cursor: number
-  output: string
-  char?: string
-  patch: Patch
-  patchIndex: number
+  content: string
+  char: string
 }
+
+export interface AnimatorStepInsertCommon {
+  type: 'insert-start' | 'insert-end'
+  cursor: number
+  content: string
+}
+
+export interface AnimatorStepRemoval {
+  type: 'removal' | 'removal-start' | 'removal-end'
+  cursor: number
+  content: string
+}
+export interface AnimatorStepInit {
+  type: 'init'
+  content: string
+}
+
+export interface AnimatorStepPatch {
+  type: 'new-patch'
+  patch: Patch
+  index: number
+}
+export interface AnimatorStepSnap {
+  type: 'new-snap'
+  snap: Snapshot
+  index: number
+}
+
+export type AnimatorStep = AnimatorStepInsert | AnimatorStepInsertCommon | AnimatorStepRemoval | AnimatorStepInit | AnimatorStepPatch | AnimatorStepSnap
 
 export interface Snapshot {
   content: string

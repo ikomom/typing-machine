@@ -1,4 +1,5 @@
-import type { Snapshot } from './types'
+import { simpleAnimator } from './animator'
+import type { AnimatorStep, Snapshot } from './types'
 
 export const SNAP_HEADING = 'ik-typing-machine Snapshots v1\n'
 export const SNAP_SEPARATOR_PRE = '-'.repeat(2)
@@ -58,6 +59,35 @@ export class Snapshots extends Array<Snapshot> {
 
     return new Snapshots(...snapshots)
   }
+
+  *animate(): Generator<AnimatorStep> {
+    let lastContent: string | undefined
+    const copy: Snapshot[] = [...this]
+
+    for (let index = 0; index < copy.length; index++) {
+      const snap = copy[index]
+      if (lastContent === undefined) {
+        lastContent = snap.content
+        yield {
+          type: 'init',
+          content: lastContent,
+        }
+        continue
+      }
+
+      yield {
+        type: 'new-snap',
+        snap,
+        index,
+      }
+
+      const animator = simpleAnimator(lastContent, snap.content)
+      for (const result of animator)
+        yield result
+
+      lastContent = snap.content
+    }
+  }
 }
 
 export type SnapshotFallbackLoader = (id: string) => Snapshots | undefined | Promise<Snapshots | undefined>
@@ -77,7 +107,7 @@ export class SnapshotManager extends Map<string, Snapshots> {
    * @param id
    * @param load
    */
-  async ensure(id: string, load = this.options.ensureFallback) {
+  async ensure(id: string, load = this.options.ensureFallback): Promise<Snapshots> {
     if (!this.has(id))
       this.set(id, await load?.(id) || new Snapshots())
 

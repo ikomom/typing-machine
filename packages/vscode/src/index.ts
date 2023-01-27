@@ -1,6 +1,6 @@
 import { existsSync, promises as fs } from 'fs'
 import { Range, Selection, commands, window, workspace } from 'vscode'
-import { SnapshotManager, Snapshots, simpleAnimator } from 'ik-typing-machine'
+import { SnapshotManager, Snapshots } from 'ik-typing-machine'
 import { logOut } from './log'
 
 const snapExt = '.typingmachine'
@@ -43,6 +43,12 @@ export function activate() {
   })
   wacther.onDidChange((uri) => {
     logOut('File:onDidChange', uri)
+    manager.delete(uri.path.replace(snapExt, ''))
+  })
+
+  wacther.onDidDelete((uri) => {
+    logOut('File:onDidChange', uri)
+    manager.delete(uri.path.replace(snapExt, ''))
   })
 
   commands.registerCommand('ik-typing-machine.snap', async () => {
@@ -52,7 +58,7 @@ export function activate() {
       return
     }
     const path = doc.uri.fsPath
-    const snaps = await manager.ensure(path)
+    const snaps: Snapshots = await manager.ensure(path)
     snaps.push({
       content: doc.getText(),
     })
@@ -70,7 +76,7 @@ export function activate() {
       window.showWarningMessage('document not open')
       return
     }
-    const snaps = await manager.ensure(doc.uri.fsPath)
+    const snaps: Snapshots = await manager.ensure(doc.uri.fsPath)
     if (!snaps.length) {
       window.showWarningMessage('No snaps found')
       return
@@ -97,35 +103,37 @@ export function activate() {
     }
     window.showInformationMessage(`Playing ${doc.fileName}`)
 
-    let lastContent: string | undefined
-    for (const snap of snaps) {
-      // save first exist snap document
-      if (lastContent === undefined) {
-        lastContent = snap.content
-        // clear doc
-        await editor.edit((edit) => {
-          edit.replace(new Range(0, 0, Infinity, Infinity), lastContent!)
-        })
-        continue
+    const setCursor = (index: number) => {
+      const pos = doc.positionAt(index)
+      editor.selection = new Selection(pos, pos)
+    }
+
+    for (const snap of snaps.animate()) {
+      switch (snap.type) {
+        case 'init':
+          await editor.edit((edit) => {
+            edit.replace(new Range(0, 0, Infinity, Infinity), snap.content)
+          })
+          break
+        case 'new-snap':
+          await sleep(900)
+          break
+
+        case 'insert':
+          await editor.edit((edit) => {
+            edit.insert(doc.positionAt(snap.cursor - 1), snap.char)
+          })
+          setCursor(snap.cursor)
+          await sleep(Math.random() * 60)
+          break
+        case 'removal':
+          await editor.edit((edit) => {
+            edit.delete(new Range(doc.positionAt(snap.cursor), doc.positionAt(snap.cursor + 1)))
+          })
+          setCursor(snap.cursor)
+          await sleep(Math.random() * 10)
+          break
       }
-
-      // play animate
-      const animator = simpleAnimator(lastContent!, snap.content)
-      for (const result of animator) {
-        const pos = doc.positionAt(result.cursor)
-        await editor.edit((edit) => {
-          if (result.type === 'insert-ing')
-            edit.insert(doc.positionAt(result.cursor - 1), result.char ?? '')
-          else if (result.type === 'removal-ing')
-            edit.delete(new Range(pos, doc.positionAt(result.cursor + 1)))
-        })
-
-        editor.selection = new Selection(pos, pos)
-
-        await sleep(Math.random() * 200)
-      }
-
-      lastContent = snap.content
     }
 
     window.showInformationMessage(`Finished ${doc.fileName}`)
