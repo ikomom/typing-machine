@@ -5,11 +5,27 @@ exports[`animator > generate > animator 1`] = `
   {
     "index": 0,
     "patch": {
-      "from": 46,
-      "length": 25,
+      "cursor": 47,
+      "length": 26,
       "type": "removal",
     },
     "type": "new-patch",
+  },
+  {
+    "content": "
+import { describe, expect, it } from 'vitest'
+import {ll} from './one'
+
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
+    "cursor": 73,
+    "type": "removal-start",
   },
   {
     "content": "
@@ -23,14 +39,27 @@ describe('should', () => {
   })
 })
 ",
+    "cursor": 72,
+    "type": "removal",
+  },
+  {
+    "content": "
+import { describe, expect, it } from 'vitest'
+import {ll} from './one'
+describe('should', () => {
+  it('exported', () => {
+    expect(33)
+    console.log('hello')
+  })
+})
+",
     "cursor": 71,
-    "type": "removal-start",
+    "type": "removal",
   },
   {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from './one
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -45,7 +74,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from './on
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -60,7 +88,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from './o
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -75,7 +102,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from './
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -90,7 +116,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from '.
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -105,7 +130,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from '
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -120,7 +144,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from 
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -135,7 +158,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} from
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -150,7 +172,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} fro
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -165,7 +186,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} fr
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -180,7 +200,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} f
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -195,7 +214,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll} 
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -210,7 +228,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll}
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -225,7 +242,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {ll
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -240,7 +256,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {l
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -255,7 +270,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import {
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -270,7 +284,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import 
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -285,7 +298,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 import
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -300,7 +312,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 impor
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -315,7 +326,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 impo
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -330,7 +340,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 imp
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -345,7 +354,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 im
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -360,7 +368,6 @@ describe('should', () => {
     "content": "
 import { describe, expect, it } from 'vitest'
 i
-
 describe('should', () => {
   it('exported', () => {
     expect(33)
@@ -374,7 +381,6 @@ describe('should', () => {
   {
     "content": "
 import { describe, expect, it } from 'vitest'
-
 
 describe('should', () => {
   it('exported', () => {
@@ -397,27 +403,13 @@ describe('should', () => {
   })
 })
 ",
-    "cursor": 46,
-    "type": "removal",
-  },
-  {
-    "content": "
-import { describe, expect, it } from 'vitest'
-
-describe('should', () => {
-  it('exported', () => {
-    expect(33)
-    console.log('hello')
-  })
-})
-",
-    "cursor": 71,
+    "cursor": 73,
     "type": "removal-end",
   },
   {
     "index": 1,
     "patch": {
-      "from": 114,
+      "cursor": 114,
       "length": 24,
       "type": "removal",
     },
@@ -788,8 +780,8 @@ describe('should', () => {
   {
     "index": 2,
     "patch": {
-      "from": 114,
-      "text": ".toEqual(1",
+      "content": ".toEqual(1",
+      "cursor": 114,
       "type": "insert",
     },
     "type": "new-patch",
@@ -959,6 +951,18 @@ describe('should', () => {
 ",
     "cursor": 114,
     "type": "insert-end",
+  },
+  {
+    "content": "
+import { describe, expect, it } from 'vitest'
+
+describe('should', () => {
+  it('exported', () => {
+    expect(33).toEqual(1)
+  })
+})
+",
+    "type": "animator-finish",
   },
 ]
 `;

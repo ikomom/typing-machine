@@ -2,6 +2,7 @@ export const input = `
 import { describe, expect, it } from 'vitest'
 import {ll} from './one'
 
+
 describe('should', () => {
   it('exported', () => {
     expect(33)

@@ -1,13 +1,13 @@
 export interface InsertPatch {
   type: 'insert'
   // 删除开始位置
-  from: number
-  text: string
+  cursor: number
+  content: string
 }
 export interface RemovalPatch {
   type: 'removal'
   // 删除开始位置
-  from: number
+  cursor: number
   length: number
 }
 
@@ -47,7 +47,12 @@ export interface AnimatorStepSnap {
   index: number
 }
 
-export type AnimatorStep = AnimatorStepInsert | AnimatorStepInsertCommon | AnimatorStepRemoval | AnimatorStepInit | AnimatorStepPatch | AnimatorStepSnap
+export interface AnimatorFinish {
+  type: 'animator-finish'
+  content: string
+}
+
+export type AnimatorStep = AnimatorFinish | AnimatorStepInsert | AnimatorStepInsertCommon | AnimatorStepRemoval | AnimatorStepInit | AnimatorStepPatch | AnimatorStepSnap
 
 export interface Snapshot {
   content: string

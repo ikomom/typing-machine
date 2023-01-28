@@ -5,17 +5,18 @@ exports[`index > diff > delta 1`] = `
   [
     0,
     "
-import { describe, expect, it } from 'vitest'",
+import { describe, expect, it } from 'vitest'
+",
   ],
   [
     -1,
-    "
-import {ll} from './one'",
+    "import {ll} from './one'
+
+",
   ],
   [
     0,
     "
-
 describe('should', () => {
   it('exported', () => {
     expect(33)",
@@ -54,18 +55,18 @@ describe('should', () => {
 exports[`index > diff > patches 1`] = `
 [
   {
-    "from": 46,
-    "length": 25,
+    "cursor": 47,
+    "length": 26,
     "type": "removal",
   },
   {
-    "from": 114,
+    "cursor": 114,
     "length": 24,
     "type": "removal",
   },
   {
-    "from": 114,
-    "text": ".toEqual(1",
+    "content": ".toEqual(1",
+    "cursor": 114,
     "type": "insert",
   },
 ]

@@ -86,7 +86,7 @@ export class Snapshots extends Array<Snapshot> {
         snap,
         index,
       }
-
+      // form last to current, generate animator array
       const animator = simpleAnimator(lastContent, snap.content)
       for (const result of animator)
         yield result
