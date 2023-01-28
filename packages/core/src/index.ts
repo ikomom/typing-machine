@@ -1,1 +1,5 @@
-export * from './core'
+export * from './patch'
+export * from './animator'
+export * from './types'
+export * from './snaps'
+export * from './utils'

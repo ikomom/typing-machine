@@ -1,5 +1,7 @@
 // import { calculatePatches, createAnimator, diffString } from '../packages/core/src'
 
+// import { Snapshots } from '../packages/core/src'
+
 let input = `
 import { describe, expect, it } from 'vitest'
 import {ll} from './one'
@@ -52,9 +54,70 @@ resetBtn.addEventListener('click', () => reset())
 function reset() {
 
 }
+// const raw = 'ik-typing-machine Snapshots v1\r\n'
+//   + '\r\n'
+//   + '--01----------\r\n'
+//   + '--02----------\r\n'
+//   + 'import App from \'./App.vue\'\r\n'
+//   + '\r\n'
+//   + '--03----------\r\n'
+//   + 'import { } from \'vue\'\r\n'
+//   + 'import App from \'./App.vue\'\r\n'
+//   + '\r\n'
+//   + '--04----------\r\n'
+//   + 'import { createApp } from \'vue\'\r\n'
+//   + 'import App from \'./App.vue\'\r\n'
+//   + '\r\n'
+//   + 'const app = createApp(App)\r\n'
+//   + 'app.mount(\'#app\')\r\n'
+//   + '\r\n'
+//   + '--05----------\r\n'
+//   + 'import { createApp } from \'vue\'\r\n'
+//   + 'import { createRouter } from \'vue-router\'\r\n'
+//   + 'import App from \'./App.vue\'\r\n'
+//   + '\r\n'
+//   + 'const app = createApp(App)\r\n'
+//   + 'const router = createRouter()\r\n'
+//   + 'app.use(router)\r\n'
+//   + 'app.mount(\'#app\')\r\n'
+//   + '\r\n'
+//   + '--06----------\r\n'
+//   + 'import { createApp } from \'vue\'\r\n'
+//   + 'import { createRouter, createWebHistory } from \'vue-router\'\r\n'
+//   + 'import App from \'./App.vue\'\r\n'
+//   + '\r\n'
+//   + 'const app = createApp(App)\r\n'
+//   + 'const router = createRouter({\r\n'
+//   + '  history: createWebHistory(),\r\n'
+//   + '})\r\n'
+//   + 'app.use(router)\r\n'
+//   + 'app.mount(\'#app\')\r\n'
+//   + '\r\n'
+//   + '--07----------\r\n'
+//   + 'import { createApp } from \'vue\'\r\n'
+//   + 'import { createRouter, createWebHistory } from \'vue-router\'\r\n'
+//   + 'import routes from \'virtual:generated-pages\'\r\n'
+//   + 'import App from \'./App.vue\'\r\n'
+//   + '\r\n'
+//   + 'const app = createApp(App)\r\n'
+//   + 'const router = createRouter({\r\n'
+//   + '  history: createWebHistory(),\r\n'
+//   + '  routes,\r\n'
+//   + '})\r\n'
+//   + 'app.use(router)\r\n'
+//   + 'app.mount(\'#app\')\r\n'
+//   + '\r\n'
+//   + '--------------\r\n'
+// const eol = '\r\n'
+// const de = Snapshots.fromString(raw, eol)
+// console.log('Snapshots.fromString(window.raw)', de)
+// const qaw = new Snapshots(...de).toString(eol)
+//
+// console.log({ eq: qaw === raw, qaw, raw })
 
 async function start() {
   reset()
+
   // const _input = input
   // const delta = diffString(_input, output)
   // const patches = calculatePatches(delta)

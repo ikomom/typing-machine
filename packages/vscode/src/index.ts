@@ -28,6 +28,8 @@ export function activate() {
       if (existsSync(filepath)) {
         const content = await fs.readFile(filepath, 'utf-8')
         const snaps = Snapshots.fromString(content)
+        logOut({ snaps, filepath, content })
+
         window.showInformationMessage('Snapshots loaded from file')
         return snaps
       }

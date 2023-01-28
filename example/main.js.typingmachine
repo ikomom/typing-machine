@@ -1,29 +1,22 @@
-// Vitest Snapshot v1
+ik-typing-machine Snapshots v1
 
-exports[`snaps > EOL test 1`] = `
-Snapshots [
-  {
-    "content": "",
-  },
-  {
-    "content": "import App from './App.vue'
-",
-  },
-  {
-    "content": "import { } from 'vue'
+--01----------
+--02----------
 import App from './App.vue'
-",
-  },
-  {
-    "content": "import { createApp } from 'vue'
+
+--03----------
+import { } from 'vue'
+import App from './App.vue'
+
+--04----------
+import { createApp } from 'vue'
 import App from './App.vue'
 
 const app = createApp(App)
 app.mount('#app')
-",
-  },
-  {
-    "content": "import { createApp } from 'vue'
+
+--05----------
+import { createApp } from 'vue'
 import { createRouter } from 'vue-router'
 import App from './App.vue'
 
@@ -31,10 +24,9 @@ const app = createApp(App)
 const router = createRouter()
 app.use(router)
 app.mount('#app')
-",
-  },
-  {
-    "content": "import { createApp } from 'vue'
+
+--06----------
+import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 
@@ -44,10 +36,9 @@ const router = createRouter({
 })
 app.use(router)
 app.mount('#app')
-",
-  },
-  {
-    "content": "import { createApp } from 'vue'
+
+--07----------
+import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import routes from 'virtual:generated-pages'
 import App from './App.vue'
@@ -59,30 +50,5 @@ const router = createRouter({
 })
 app.use(router)
 app.mount('#app')
-",
-  },
-]
-`;
 
-exports[`snaps > persist > serialized 1`] = `
-"ik-typing-machine Snapshots v1
-
---01----------
-
-----OPTIONS----
-{
-  \\"wait\\": 200,
-  \\"pause\\": false
-}
---02----------
-import {} from \\"vue\\"
---03----------
-import { createApp } from \\"vue\\"
-
-const app = createApp()
-
-----OPTIONS----
-{\\"wait\\":100}
 --------------
-"
-`;

@@ -1,13 +1,14 @@
 import { simpleAnimator } from './animator'
 import type { AnimatorStep, Snapshot } from './types'
+import { replaceAll } from './utils'
 
-export const SNAP_HEADING = 'ik-typing-machine Snapshots v1\n'
+export const SNAP_HEADING = 'ik-typing-machine Snapshots v1'
 export const SNAP_SEPARATOR_PRE = '-'.repeat(2)
 export const SNAP_SEPARATOR_SUFFIX = '-'.repeat(10)
 export const SNAP_SEPARATOR_OPTIONS = '----OPTIONS----'
 export const SNAP_SEPARATOR = `${SNAP_SEPARATOR_PRE}--${SNAP_SEPARATOR_SUFFIX}`
-export const SNAP_SEPARATOR_MATCHER = new RegExp(`\\n?${SNAP_SEPARATOR_PRE}[#\\w-]*${SNAP_SEPARATOR_SUFFIX}\\n`, 'g')
-export const SNAP_SEPARATOR_MATCHER_OPTIONS = new RegExp(`\\n?${SNAP_SEPARATOR_OPTIONS}`, 'g')
+export const snapSeparatorMatcher = (eol: string) => new RegExp(`${eol}?${SNAP_SEPARATOR_PRE}[#\\w-]*${SNAP_SEPARATOR_SUFFIX}${eol}`, 'g')
+export const snapSeparatorMatcherOptions = (eol: string) => new RegExp(`${eol}?${SNAP_SEPARATOR_OPTIONS}`, 'g')
 
 /**
  * Snapshot store
@@ -25,40 +26,41 @@ export class Snapshots extends Array<Snapshot> {
     return this[0]
   }
 
-  toString(): string {
+  toString(eol = '\n'): string {
     return [
-      SNAP_HEADING,
+      SNAP_HEADING + eol,
       ...this.flatMap((snap, i) => {
         return [
           `${SNAP_SEPARATOR_PRE + String(i + 1).padStart(2, '0') + SNAP_SEPARATOR_SUFFIX}`,
           snap.content,
-          SNAP_SEPARATOR,
           ...(snap.options
             ? [
                 SNAP_SEPARATOR_OPTIONS,
-                JSON.stringify(snap.options, null, 2)]
+                Object.keys(snap.options).length > 1
+                  ? JSON.stringify(snap.options, null, 2)
+                  : JSON.stringify(snap.options)]
             : []),
-        ].filter(i => i !== undefined)
+        ]
       }),
       SNAP_SEPARATOR,
       '',
-    ].join('\n')
+    ].join(eol)
   }
 
-  static fromString(raw: string) {
-    const parts = raw
-      .split(SNAP_SEPARATOR_MATCHER)
-      .slice(1, -1) // remove header and tailing
-
+  static fromString(raw: string, eol = '\n') {
+    let parts = replaceAll(raw, eol, '\n')
+      .split(snapSeparatorMatcher('\n'))
+      // .slice(1, -1) // remove header and tailing
+    // console.log({ raw, q: replaceAll(raw, eol, '\n'), eol, parts })
+    parts = parts.slice(1, -1)
     const snapshots: Snapshot[] = []
-    for (let i = 0; i < parts.length; i += 2) {
+    for (let i = 0; i < parts.length; i += 1) {
+      const [content, optionsRaw] = parts[i].split(snapSeparatorMatcherOptions('\n'))
       const snap: Snapshot = {
-        content: parts[i],
+        content,
       }
-      const optionsRaw = parts[i + 1].trim()
-
-      if (optionsRaw)
-        snap.options = JSON.parse(optionsRaw.split(SNAP_SEPARATOR_MATCHER_OPTIONS)[1])
+      if (optionsRaw?.trim())
+        snap.options = JSON.parse(optionsRaw)
 
       snapshots.push(snap)
     }
