@@ -45,12 +45,16 @@ importers:
 
   packages/vscode:
     specifiers:
+      '@types/n-readlines': ^1.0.3
       '@types/vscode': ^1.74.0
       ik-typing-machine: workspace:../core
+      n-readlines: ^1.0.1
       tsup: ^6.5.0
     dependencies:
       ik-typing-machine: link:../core
+      n-readlines: 1.0.1
     devDependencies:
+      '@types/n-readlines': 1.0.3
       '@types/vscode': 1.74.0
       tsup: 6.5.0
 
@@ -616,6 +620,12 @@ packages:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
     dependencies:
       '@types/unist': 2.0.6
+    dev: true
+
+  /@types/n-readlines/1.0.3:
+    resolution: {integrity: sha512-6zMvlOZp56sEEndnkEX+A05Q+LrPB7yDUX1d5oE0aOF9rIE10ndhZHEy0mBFqzBUIw5sSFMUypwgD3FehplPvg==}
+    dependencies:
+      '@types/node': 18.7.18
     dev: true
 
   /@types/node/18.7.18:
@@ -2954,6 +2964,11 @@ packages:
       object-assign: 4.1.1
       thenify-all: 1.6.0
     dev: true
+
+  /n-readlines/1.0.1:
+    resolution: {integrity: sha512-z4SyAIVgMy7CkgsoNw7YVz40v0g4+WWvvqy8+ZdHrCtgevcEO758WQyrYcw3XPxcLxF+//RszTz/rO48nzD0wQ==}
+    engines: {node: '>=6.x.x'}
+    dev: false
 
   /nanoid/3.3.4:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}

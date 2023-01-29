@@ -47,15 +47,19 @@ export class Snapshots extends Array<Snapshot> {
     ].join(eol)
   }
 
+  static fromRawStr(raw: string) {
+    const parts = raw.split('\r?\n')
+  }
+
   static fromString(raw: string, eol = '\n') {
-    let parts = replaceAll(raw, eol, '\n')
-      .split(snapSeparatorMatcher('\n'))
+    let parts = raw
+      .split(snapSeparatorMatcher(eol))
       // .slice(1, -1) // remove header and tailing
     // console.log({ raw, q: replaceAll(raw, eol, '\n'), eol, parts })
     parts = parts.slice(1, -1)
     const snapshots: Snapshot[] = []
     for (let i = 0; i < parts.length; i += 1) {
-      const [content, optionsRaw] = parts[i].split(snapSeparatorMatcherOptions('\n'))
+      const [content, optionsRaw] = parts[i].split(snapSeparatorMatcherOptions(eol))
       const snap: Snapshot = {
         content,
       }

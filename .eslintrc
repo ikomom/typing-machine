@@ -1,4 +1,7 @@
 {
   "extends": "@antfu",
-  "ignorePatterns": ["example"]
+  "ignorePatterns": ["example"],
+  "rules": {
+    "no-cond-assign": "off"
+  }
 }

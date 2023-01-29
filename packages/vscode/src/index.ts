@@ -1,6 +1,8 @@
 import { existsSync, promises as fs } from 'fs'
+import * as os from 'os'
+import { promises as readline } from 'readline'
 import { Range, Selection, commands, window, workspace } from 'vscode'
-import { SnapshotManager, Snapshots } from 'ik-typing-machine'
+import { SnapshotManager, Snapshots, replaceAll } from 'ik-typing-machine'
 import { logOut } from './log'
 
 const snapExt = '.typingmachine'
@@ -15,7 +17,9 @@ function getSnapPath(id: string) {
 
 async function writeSnapshots(path: string, snap: Snapshots) {
   const filepath = getSnapPath(path)
-  await fs.writeFile(filepath, snap.toString(), 'utf-8')
+  const writed = snap.toString(os.EOL)
+  logOut({ writed })
+  await fs.writeFile(filepath, writed, 'utf-8')
 }
 
 export function activate() {
@@ -25,6 +29,7 @@ export function activate() {
     // if old snapshot file exist, read it
     async ensureFallback(path: string) {
       const filepath = getSnapPath(path)
+      logOut('ensureFallback', { filepath, path })
       if (existsSync(filepath)) {
         const content = await fs.readFile(filepath, 'utf-8')
         const snaps = Snapshots.fromString(content)
@@ -40,17 +45,26 @@ export function activate() {
   // const wacther = workspace.createFileSystemWatcher('**/*.ts')
   // delete old snaps when recreate or rename file
   wacther.onDidCreate((uri) => {
-    logOut('File:onDidCreate', uri)
-    manager.delete(uri.path.replace(snapExt, ''))
+    logOut('File:onDidCreate', {
+      uri,
+      manager: [...manager],
+    })
+    manager.delete(uri.fsPath.replace(snapExt, ''))
   })
   wacther.onDidChange((uri) => {
-    logOut('File:onDidChange', uri)
-    manager.delete(uri.path.replace(snapExt, ''))
+    logOut('File:onDidChange', {
+      uri,
+      manager: [...manager],
+    })
+    manager.delete(uri.fsPath.replace(snapExt, ''))
   })
 
   wacther.onDidDelete((uri) => {
-    logOut('File:onDidChange', uri)
-    manager.delete(uri.path.replace(snapExt, ''))
+    logOut('File:onDidChange', {
+      uri,
+      manager: [...manager],
+    })
+    manager.delete(uri.fsPath.replace(snapExt, ''))
   })
 
   commands.registerCommand('ik-typing-machine.snap', async () => {
@@ -113,6 +127,7 @@ export function activate() {
     for (const snap of snaps.animate()) {
       switch (snap.type) {
         case 'init':
+          logOut('insert', snap)
           await editor.edit((edit) => {
             edit.replace(new Range(0, 0, Infinity, Infinity), snap.content)
           })
@@ -122,10 +137,11 @@ export function activate() {
           break
 
         case 'insert':
+          logOut('insert', { i: snap.cursor - 1, char: snap.char })
           await editor.edit((edit) => {
             edit.insert(doc.positionAt(snap.cursor - 1), snap.char)
           })
-          setCursor(snap.cursor)
+          // setCursor(snap.cursor)
           await sleep(Math.random() * 60)
           break
         case 'removal':
