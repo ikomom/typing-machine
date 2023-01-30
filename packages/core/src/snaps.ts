@@ -7,8 +7,8 @@ export const SNAP_SEPARATOR_PRE = '-'.repeat(2)
 export const SNAP_SEPARATOR_SUFFIX = '-'.repeat(10)
 export const SNAP_SEPARATOR_OPTIONS = '----OPTIONS----'
 export const SNAP_SEPARATOR = `${SNAP_SEPARATOR_PRE}--${SNAP_SEPARATOR_SUFFIX}`
-export const snapSeparatorMatcher = (eol: string) => new RegExp(`${eol}?${SNAP_SEPARATOR_PRE}[#\\w-]*${SNAP_SEPARATOR_SUFFIX}${eol}`, 'g')
-export const snapSeparatorMatcherOptions = (eol: string) => new RegExp(`${eol}?${SNAP_SEPARATOR_OPTIONS}`, 'g')
+export const SNAP_SEPARATOR_MATCHER = new RegExp(`\\r?\\n${SNAP_SEPARATOR_PRE}[#\\w-]*${SNAP_SEPARATOR_SUFFIX}\\r?\\n?`, 'g')
+export const SNAP_SEPARATOR_MATCHER_OPTIONS = new RegExp(`\\r?\\n${SNAP_SEPARATOR_OPTIONS}`, 'g')
 
 /**
  * Snapshot store
@@ -26,9 +26,9 @@ export class Snapshots extends Array<Snapshot> {
     return this[0]
   }
 
-  toString(eol = '\n'): string {
+  toString(): string {
     return [
-      SNAP_HEADING + eol,
+      `${SNAP_HEADING}\n`,
       ...this.flatMap((snap, i) => {
         return [
           `${SNAP_SEPARATOR_PRE + String(i + 1).padStart(2, '0') + SNAP_SEPARATOR_SUFFIX}`,
@@ -44,22 +44,46 @@ export class Snapshots extends Array<Snapshot> {
       }),
       SNAP_SEPARATOR,
       '',
-    ].join(eol)
+    ].join('\n')
   }
 
   static fromRawStr(raw: string) {
-    const parts = raw.split('\r?\n')
+    const lines = raw.split(/\r?\n/)
+    const snapshots: Snapshot[] = []
+    const SNAP_BEGIN_REGEXP = new RegExp(`${SNAP_SEPARATOR_PRE}[\\w]*${SNAP_SEPARATOR_SUFFIX}`)
+
+    let line = ''
+    let start = false
+    for (let i = 0; i < lines.length; i++) {
+      const item = lines[i]
+      if (SNAP_BEGIN_REGEXP.test(item)) {
+        start = true
+        console.log('match', item)
+        if (line) {
+          snapshots.push({
+            content: line,
+          })
+          line = ''
+        }
+      }
+      else if (start) {
+        line += item
+      }
+    }
+    console.log('snapshots', { snapshots })
+
+    return new Snapshots(...snapshots)
   }
 
-  static fromString(raw: string, eol = '\n') {
+  static fromString(raw: string) {
     let parts = raw
-      .split(snapSeparatorMatcher(eol))
+      .split(SNAP_SEPARATOR_MATCHER)
       // .slice(1, -1) // remove header and tailing
     // console.log({ raw, q: replaceAll(raw, eol, '\n'), eol, parts })
     parts = parts.slice(1, -1)
     const snapshots: Snapshot[] = []
     for (let i = 0; i < parts.length; i += 1) {
-      const [content, optionsRaw] = parts[i].split(snapSeparatorMatcherOptions(eol))
+      const [content, optionsRaw] = parts[i].split(SNAP_SEPARATOR_MATCHER_OPTIONS)
       const snap: Snapshot = {
         content,
       }
@@ -103,13 +127,16 @@ export class Snapshots extends Array<Snapshot> {
 }
 
 export type SnapshotFallbackLoader = (id: string) => Snapshots | undefined | Promise<Snapshots | undefined>
-export interface SnapshotManagerOptions {
+export interface SnapshotsManagerOptions {
   ensureFallback?: SnapshotFallbackLoader
 }
 
-export class SnapshotManager extends Map<string, Snapshots> {
+/**
+ * manage Snapshots
+ */
+export class SnapshotsManager extends Map<string, Snapshots> {
   constructor(
-    public options: SnapshotManagerOptions,
+    public options: SnapshotsManagerOptions,
   ) {
     super()
   }

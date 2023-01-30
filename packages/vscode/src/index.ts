@@ -2,7 +2,7 @@ import { existsSync, promises as fs } from 'fs'
 import * as os from 'os'
 import { promises as readline } from 'readline'
 import { Range, Selection, commands, window, workspace } from 'vscode'
-import { SnapshotManager, Snapshots, replaceAll } from 'ik-typing-machine'
+import { SnapshotsManager, Snapshots, replaceAll } from 'ik-typing-machine'
 import { logOut } from './log'
 
 const snapExt = '.typingmachine'
@@ -25,7 +25,7 @@ async function writeSnapshots(path: string, snap: Snapshots) {
 export function activate() {
   logOut('active plugin')
 
-  const manager = new SnapshotManager({
+  const manager = new SnapshotsManager({
     // if old snapshot file exist, read it
     async ensureFallback(path: string) {
       const filepath = getSnapPath(path)

@@ -1,6 +1,7 @@
 import * as os from 'os'
 import { existsSync, promises as fs } from 'fs'
-import { Snapshots } from 'ik-typing-machine'
+import { replaceEOL } from 'ik-typing-machine'
+import type { Snapshots } from 'ik-typing-machine'
 import NReadLines from 'n-readlines'
 import { logOut } from './log'
 
@@ -11,7 +12,7 @@ export function getSnapPath(id: string) {
 }
 
 export async function writeSnapshots(filepath: string, snap: Snapshots) {
-  const write = snap.toString(os.EOL)
+  const write = snap.toString()
   logOut('writeSnapshots', { write })
   await fs.writeFile(filepath, write, 'utf-8')
 }
@@ -21,18 +22,17 @@ export async function writeSnapshots(filepath: string, snap: Snapshots) {
  * @param filepath
  */
 export function readSnapshotLine(filepath: string) {
+  const result: string[] = []
+
   if (existsSync(filepath)) {
     const fileLines = new NReadLines(filepath)
     let line
-    const result = []
     while (line = fileLines.next()) {
       // console.log(` ${lineNumber} : ${line.toString('ascii')}`)
-      result.push(`${line.toString('ascii').trim()}`)
+      result.push(`${replaceEOL(line.toString('ascii'))}`)
     }
 
-    return Snapshots.fromString(result.join('\n'))
+    return result
   }
-  else {
-    return new Snapshots()
-  }
+  throw new Error('Snapshots file not Exist')
 }
