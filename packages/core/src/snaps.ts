@@ -9,6 +9,7 @@ export const SNAP_SEPARATOR_OPTIONS = '----OPTIONS----'
 export const SNAP_SEPARATOR = `${SNAP_SEPARATOR_PRE}--${SNAP_SEPARATOR_SUFFIX}`
 export const SNAP_SEPARATOR_MATCHER = new RegExp(`\\r?\\n${SNAP_SEPARATOR_PRE}[#\\w-]*${SNAP_SEPARATOR_SUFFIX}\\r?\\n?`, 'g')
 export const SNAP_SEPARATOR_MATCHER_OPTIONS = new RegExp(`\\r?\\n${SNAP_SEPARATOR_OPTIONS}`, 'g')
+export const SNAP_BEGIN_REGEXP = new RegExp(`${SNAP_SEPARATOR_PRE}[\\w]*${SNAP_SEPARATOR_SUFFIX}`)
 
 /**
  * Snapshot store
@@ -36,9 +37,8 @@ export class Snapshots extends Array<Snapshot> {
           ...(snap.options
             ? [
                 SNAP_SEPARATOR_OPTIONS,
-                Object.keys(snap.options).length > 1
-                  ? JSON.stringify(snap.options, null, 2)
-                  : JSON.stringify(snap.options)]
+                JSON.stringify(snap.options, null, 0),
+              ]
             : []),
         ]
       }),
@@ -47,35 +47,69 @@ export class Snapshots extends Array<Snapshot> {
     ].join('\n')
   }
 
-  static fromRawStr(raw: string) {
+  static fromString(raw: string) {
     const lines = raw.split(/\r?\n/)
     const snapshots: Snapshot[] = []
-    const SNAP_BEGIN_REGEXP = new RegExp(`${SNAP_SEPARATOR_PRE}[\\w]*${SNAP_SEPARATOR_SUFFIX}`)
 
     let line = ''
     let start = false
+    let index = 0
+    let options
+    let skipNext = false
+
     for (let i = 0; i < lines.length; i++) {
       const item = lines[i]
-      if (SNAP_BEGIN_REGEXP.test(item)) {
+      const next = lines[i + 1]
+      const IS_BEGIN = (str: string) => SNAP_BEGIN_REGEXP.test(str)
+      const IS_OPTION = (str: string) => SNAP_SEPARATOR_OPTIONS === str
+
+      if (skipNext) {
+        skipNext = false
+        continue
+      }
+
+      if (IS_BEGIN(item)) {
         start = true
-        console.log('match', item)
-        if (line) {
-          snapshots.push({
+        if (index !== 0) {
+          // console.log('match', { item, line, l: snapshots.length })
+          const snapshot: Snapshot = {
             content: line,
-          })
+          }
+          if (options)
+            snapshot.options = options
+
+          snapshots.push(snapshot)
           line = ''
+          options = undefined
+        }
+        index++
+      }
+      else if (IS_OPTION(item)) {
+        try {
+          options = JSON.parse(lines[i + 1])
+          skipNext = true
+        }
+        catch (e) {
+          options = undefined
+          skipNext = false
         }
       }
       else if (start) {
-        line += item
+        // console.log({ item })
+        line += (
+          // !item
+          item.endsWith('\n'))
+        || IS_OPTION(next)
+        || IS_BEGIN(next)
+          ? `${item}`
+          : `${item}\n`
       }
     }
-    console.log('snapshots', { snapshots })
-
+    // console.log({ snapshots })
     return new Snapshots(...snapshots)
   }
 
-  static fromString(raw: string) {
+  static fromString_old(raw: string) {
     let parts = raw
       .split(SNAP_SEPARATOR_MATCHER)
       // .slice(1, -1) // remove header and tailing

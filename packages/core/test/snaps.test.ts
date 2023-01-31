@@ -1,31 +1,38 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 import { describe, expect, it } from 'vitest'
-import type { Snapshot } from '../src'
 import { Snapshots } from '../src'
+import { snapsData } from './fixture'
+
+// async function writeSnapshots(fileName: string, snap: Snapshots) {
+//   const write = snap.toString()
+//   // logOut('writeSnapshots', { write })
+//   await fs.writeFile(path.resolve(`example/__test__/${fileName}`), write, 'utf-8')
+// }
+async function readSnapshots(fileName: string) {
+  const inputPath = path.resolve(`example/__test__/${fileName}`)
+  return fs.readFile(inputPath, 'utf-8')
+}
 
 describe('snaps', () => {
-  it('persist', () => {
-    const data: Snapshot[] = [
-      { content: '', options: { wait: 200, pause: false } },
-      { content: 'import {} from "vue"' },
-      { content: 'import { createApp } from "vue"\n\nconst app = createApp()\n', options: { wait: 100 } },
-    ]
-
-    const snaps = new Snapshots(...data)
+  it('persist', async () => {
+    const snaps = new Snapshots(...snapsData)
     const serialized = snaps.toString()
 
     expect(serialized).toMatchSnapshot('serialized')
 
     const deserialized = Snapshots.fromString(serialized)
 
-    expect(data).toEqual([...deserialized])
+    expect(snapsData).toEqual([...deserialized])
+    // await writeSnapshots('snaps_persist.js.typingmachine', snaps)
   })
 
   it('deserialized', async () => {
-    const inputPath = path.resolve('example/main.js.typingmachine')
-    const serialized = await fs.readFile(inputPath, 'utf-8')
-    const deserialized = Snapshots.fromRawStr(serialized)
-    // expect(deserialized.toString()).toEqual(serialized)
+    const serialized = await readSnapshots('snaps_deserialized.js.typingmachine')
+    const deserialized = Snapshots.fromString(serialized).toString()
+
+    expect(deserialized).toMatchSnapshot('output')
+    expect(serialized).toMatchSnapshot('input')
+    expect(deserialized).toEqual(serialized)
   })
 })

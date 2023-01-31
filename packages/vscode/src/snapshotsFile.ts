@@ -13,7 +13,7 @@ export function getSnapPath(id: string) {
 
 export async function writeSnapshots(filepath: string, snap: Snapshots) {
   const write = snap.toString()
-  logOut('writeSnapshots', { write })
+  // logOut('writeSnapshots', { write })
   await fs.writeFile(filepath, write, 'utf-8')
 }
 
