@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 import { describe, expect, it } from 'vitest'
-import { Snapshots } from '../src'
+import { Snapshots, replaceEOL } from '../src'
 import { snapsData } from './fixture'
 
 // async function writeSnapshots(fileName: string, snap: Snapshots) {
@@ -33,6 +33,6 @@ describe('snaps', () => {
 
     expect(deserialized).toMatchSnapshot('output')
     expect(serialized).toMatchSnapshot('input')
-    expect(deserialized).toEqual(serialized)
+    expect(replaceEOL(deserialized)).toEqual(replaceEOL(serialized))
   })
 })

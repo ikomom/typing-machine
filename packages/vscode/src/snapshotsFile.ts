@@ -1,9 +1,7 @@
-import * as os from 'os'
 import { existsSync, promises as fs } from 'fs'
 import { replaceEOL } from 'ik-typing-machine'
 import type { Snapshots } from 'ik-typing-machine'
 import NReadLines from 'n-readlines'
-import { logOut } from './log'
 
 export const snapExt = '.typingmachine'
 

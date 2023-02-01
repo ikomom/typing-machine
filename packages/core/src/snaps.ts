@@ -1,6 +1,5 @@
 import { simpleAnimator } from './animator'
 import type { AnimatorStep, Snapshot } from './types'
-import { replaceAll } from './utils'
 
 export const SNAP_HEADING = 'ik-typing-machine Snapshots v1'
 export const SNAP_SEPARATOR_PRE = '-'.repeat(2)
