@@ -1,8 +1,7 @@
 import { existsSync, promises as fs } from 'fs'
-import * as os from 'os'
-import { promises as readline } from 'readline'
-import { Range, Selection, commands, window, workspace } from 'vscode'
-import { SnapshotsManager, Snapshots, replaceAll } from 'ik-typing-machine'
+import { EndOfLine, Range, Selection, commands, window, workspace } from 'vscode'
+
+import { Snapshots, SnapshotsManager } from 'ik-typing-machine'
 import { logOut } from './log'
 
 const snapExt = '.typingmachine'
@@ -17,7 +16,7 @@ function getSnapPath(id: string) {
 
 async function writeSnapshots(path: string, snap: Snapshots) {
   const filepath = getSnapPath(path)
-  const writed = snap.toString(os.EOL)
+  const writed = snap.toString()
   logOut({ writed })
   await fs.writeFile(filepath, writed, 'utf-8')
 }
@@ -85,6 +84,27 @@ export function activate() {
     window.showInformationMessage(`succeed take ${snaps.length} snapShot of ${doc.fileName}`)
   })
 
+  commands.registerCommand('ik-typing-machine.test', async () => {
+    const editor = window.activeTextEditor
+    const doc = editor?.document
+    if (!doc || !editor) {
+      window.showWarningMessage('document not open')
+      return
+    }
+
+    const arr = ['x', '\n', 'y', '\n', '\n', 'z']
+
+    for (let i = 0; i < arr.length; i++) {
+      const value = arr[i]
+
+      await editor.edit((editBuilder) => {
+        logOut({ i, value, c: doc.getText(doc.getWordRangeAtPosition(doc.positionAt(i + 1))) })
+        editBuilder.insert(doc.positionAt(i + 1), value)
+      })
+      await sleep(200)
+    }
+  })
+
   commands.registerCommand('ik-typing-machine.play', async () => {
     const editor = window.activeTextEditor
     const doc = editor?.document
@@ -97,6 +117,18 @@ export function activate() {
       window.showWarningMessage('No snaps found')
       return
     }
+    const setEOL = async (eol: EndOfLine) => {
+      await editor.edit((editBuilder) => {
+        editBuilder.setEndOfLine(eol)
+      })
+    }
+    const setCursor = (index: number) => {
+      const pos = doc.positionAt(index)
+      editor.selection = new Selection(pos, pos)
+    }
+    // set Eol to LF, avoid insert text animator error
+    const lastEOL = doc.eol
+    await setEOL(EndOfLine.LF)
     // compare lastSnap with current doc
     const lastSnap = snaps[snaps.length - 1]
     if (lastSnap.content !== doc.getText()) {
@@ -119,11 +151,7 @@ export function activate() {
     }
     window.showInformationMessage(`Playing ${doc.fileName}`)
 
-    const setCursor = (index: number) => {
-      const pos = doc.positionAt(index)
-      editor.selection = new Selection(pos, pos)
-    }
-
+    logOut({ snaps })
     for (const snap of snaps.animate()) {
       switch (snap.type) {
         case 'init':
@@ -132,17 +160,22 @@ export function activate() {
             edit.replace(new Range(0, 0, Infinity, Infinity), snap.content)
           })
           break
+        case 'animator-finish':
+          logOut('animator-finish', { text: doc.getText() })
+          break
         case 'new-snap':
           await sleep(900)
           break
 
         case 'insert':
-          logOut('insert', { i: snap.cursor - 1, char: snap.char })
           await editor.edit((edit) => {
+            const eol = snap.char === '\n' ? '\r\n' : snap.char
+            logOut('insert', { i: snap.cursor - 1, char: snap.char, eol })
+
             edit.insert(doc.positionAt(snap.cursor - 1), snap.char)
           })
-          // setCursor(snap.cursor)
-          await sleep(Math.random() * 60)
+          setCursor(snap.cursor)
+          await sleep(Math.random() * 100)
           break
         case 'removal':
           await editor.edit((edit) => {
@@ -153,6 +186,7 @@ export function activate() {
           break
       }
     }
+    await setEOL(lastEOL)
 
     window.showInformationMessage(`Finished ${doc.fileName}`)
   })

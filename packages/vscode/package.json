@@ -36,6 +36,12 @@
         "title": "Play ikTypingMachine",
         "category": "ikTypingMachine",
         "icon": "$(play)"
+      },
+      {
+        "command": "ik-typing-machine.test",
+        "title": "Test ikTypingMachine",
+        "category": "ikTypingMachine",
+        "icon": "$(test-view-icon)"
       }
     ],
     "menus": {
@@ -46,6 +52,10 @@
         },
         {
           "command": "ik-typing-machine.play",
+          "group": "navigation@1170"
+        },
+        {
+          "command": "ik-typing-machine.test",
           "group": "navigation@1170"
         }
       ]
