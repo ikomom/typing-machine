@@ -9,7 +9,7 @@
     "release": "bumpp package.json packages/*/package.json && pnpm -r publish --access public --no-git-checks && pnpm -r run publish",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "play": "vite playground",
+    "play": "nr -C playground dev",
     "vscode": "nr -C packages/vscode dev"
   },
   "dependencies": {
@@ -28,7 +28,6 @@
     "rimraf": "^3.0.2",
     "typescript": "^4.8.3",
     "unbuild": "^0.8.11",
-    "vite": "^3.1.2",
     "vitest": "^0.23.4"
   }
 }

@@ -1,0 +1,28 @@
+{
+  "name": "playground",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.1.14",
+    "@types/codemirror": "^5.60.5",
+    "@types/splitpanes": "^2.2.1",
+    "@unocss/reset": "^0.48.5",
+    "@vitejs/plugin-vue": "^3.2.0",
+    "@vueuse/core": "^9.12.0",
+    "codemirror": "^5.65.2",
+    "codemirror-theme-vars": "^0.1.1",
+    "splitpanes": "^3.1.1",
+    "unocss": "^0.48.5",
+    "unplugin-auto-import": "^0.13.0",
+    "unplugin-vue-components": "^0.20.1",
+    "vite": "^3.1.2",
+    "vite-plugin-inspect": "^0.6.1",
+    "vue": "^3.2.31"
+
+  }
+}
