@@ -29,7 +29,6 @@ export default defineConfig({
       ],
       input: [
         './index.html',
-        './__play.html',
       ],
     },
   },
