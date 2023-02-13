@@ -15,6 +15,11 @@ const handleResize = (event: { size: number }[]) => {
   // eslint-disable-next-line no-console
   console.log('event', event)
 }
+const value = ref(`function index(){
+  const a = 'hello'
+  console.log(a, 'world')
+}
+`)
 </script>
 
 <template>
@@ -32,7 +37,7 @@ const handleResize = (event: { size: number }[]) => {
           @click="isDark = !isDark"
         />
       </TitleBar>
-      <CodeMirror flex-auto class="scrolls border-(r gray-400/20)" />
+      <CodeMirror v-model="value" mode="js" flex-auto class="scrolls border-(r gray-400/20)" />
     </Pane>
     <Pane :min-size="titleHeightPercent" flex="~ col">
       <TitleBar title="Output CSS" />

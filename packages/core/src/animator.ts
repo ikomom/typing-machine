@@ -1,7 +1,7 @@
-import { calculatePatches, diffString } from './index'
+import { calculatePatches, diffString, sliceInput } from './index'
 import type { AnimatorStep, Patch } from './index'
 
-export function* createAnimator(input: string, patches: Patch[]): Generator<AnimatorStep> {
+export function* animatePatches(input: string, patches: Patch[]): Generator<AnimatorStep> {
   let content = input
   // 当前游标
   let cursor = 0
@@ -17,14 +17,12 @@ export function* createAnimator(input: string, patches: Patch[]): Generator<Anim
       cursor = patch.cursor
       const tail = content.slice(patch.cursor)
       // 模拟动画过程
-      let selection = ''
       yield { type: 'insert-start', cursor, content }
-      for (const char of patch.content) {
-        selection += char
+      for (const { char, output, cursor: delta } of animateInsertionSlices(patch.content)) {
         yield {
           type: 'insert',
-          cursor: cursor + selection.length,
-          content: head + selection + tail,
+          cursor: cursor + delta,
+          content: head + output + tail,
           char,
         }
       }
@@ -53,10 +51,31 @@ export function* createAnimator(input: string, patches: Patch[]): Generator<Anim
   yield { type: 'animator-finish', content }
 }
 
-export function simpleAnimator(input: string, output: string) {
+export function *animateInsertionSlices(input: string) {
+  const slices = sliceInput(input)
+  let output = ''
+  for (const { content, cursor } of slices) {
+    const head = output.slice(0, cursor)
+    const tail = output.slice(cursor)
+
+    let body = ''
+    for (const char of content) {
+      body += char
+      // console.log('body', { body, char })
+      yield {
+        char,
+        output: head + body + tail,
+        cursor: cursor + body.length,
+      }
+    }
+    output = head + content + tail
+  }
+}
+
+export function animateTo(input: string, output: string) {
   const delta = diffString(input, output)
   const patches = calculatePatches(delta)
-  return createAnimator(input, patches)
+  return animatePatches(input, patches)
 }
 
 /**
@@ -66,7 +85,7 @@ export function simpleAnimator(input: string, output: string) {
  */
 export function applyPatches(input: string, patches: Patch[]) {
   // 每次只关注添加、删除的位置, 并且拼接起来
-  for (const patch of createAnimator(input, patches)) {
+  for (const patch of animatePatches(input, patches)) {
     if (patch.type === 'animator-finish')
       return patch.content
   }

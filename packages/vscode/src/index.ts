@@ -155,7 +155,7 @@ export function activate() {
     for (const snap of snaps.animate()) {
       switch (snap.type) {
         case 'init':
-          logOut('insert', snap)
+          logOut('init', snap)
           await editor.edit((edit) => {
             edit.replace(new Range(0, 0, Infinity, Infinity), snap.content)
           })
@@ -169,8 +169,8 @@ export function activate() {
 
         case 'insert':
           await editor.edit((edit) => {
-            const eol = snap.char === '\n' ? '\r\n' : snap.char
-            logOut('insert', { i: snap.cursor - 1, char: snap.char, eol })
+            // const eol = snap.char === '\n' ? '\r\n' : snap.char
+            // logOut('insert', { i: snap.cursor - 1, char: snap.char, eol })
 
             edit.insert(doc.positionAt(snap.cursor - 1), snap.char)
           })

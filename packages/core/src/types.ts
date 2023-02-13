@@ -64,3 +64,9 @@ export interface SnapshotOptions {
   wait?: number
   pause?: boolean
 }
+
+export interface Slice {
+  content: string
+  order: number
+  cursor: number
+}

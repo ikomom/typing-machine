@@ -1,4 +1,4 @@
-import { simpleAnimator } from './animator'
+import { animateTo } from './animator'
 import type { AnimatorStep, Snapshot } from './types'
 
 export const SNAP_HEADING = 'ik-typing-machine Snapshots v1'
@@ -150,7 +150,7 @@ export class Snapshots extends Array<Snapshot> {
         index,
       }
       // form last to current, generate animator array
-      const animator = simpleAnimator(lastContent, snap.content)
+      const animator = animateTo(lastContent, snap.content)
       for (const result of animator)
         yield result
 
