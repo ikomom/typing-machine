@@ -1,4 +1,6 @@
-import { animateTo } from './animator'
+import { stepsTo } from './steps'
+import type { TypewriterOptions } from './typemachine'
+import { typingAnimator } from './typemachine'
 import type { AnimatorStep, Snapshot } from './types'
 
 export const SNAP_HEADING = 'ik-typing-machine Snapshots v1'
@@ -129,7 +131,7 @@ export class Snapshots extends Array<Snapshot> {
     return new Snapshots(...snapshots)
   }
 
-  *animate(): Generator<AnimatorStep> {
+  *steps(): Generator<AnimatorStep> {
     let lastContent: string | undefined
     const copy: Snapshot[] = [...this]
 
@@ -150,12 +152,16 @@ export class Snapshots extends Array<Snapshot> {
         index,
       }
       // form last to current, generate animator array
-      const animator = animateTo(lastContent, snap.content)
+      const animator = stepsTo(lastContent, snap.content)
       for (const result of animator)
         yield result
 
       lastContent = snap.content
     }
+  }
+
+  typeMachine(options?: TypewriterOptions) {
+    return typingAnimator(this.steps(), options)
   }
 }
 

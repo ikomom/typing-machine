@@ -1,5 +1,5 @@
 import { existsSync, promises as fs } from 'fs'
-import { Snapshots, SnapshotsManager, getTimeout } from 'ik-typing-machine'
+import { Snapshots, SnapshotsManager } from 'ik-typing-machine'
 import { EndOfLine, Range, Selection, commands, window, workspace } from 'vscode'
 
 import { logOut } from './log'
@@ -152,7 +152,7 @@ export function activate() {
     window.showInformationMessage(`Playing ${doc.fileName}`)
 
     logOut({ snaps })
-    for (const snap of snaps.animate()) {
+    for await (const snap of snaps.typeMachine()) {
       switch (snap.type) {
         case 'init':
           logOut('init', snap)
@@ -163,10 +163,6 @@ export function activate() {
         case 'animator-finish':
           logOut('animator-finish', { text: doc.getText() })
           break
-        case 'new-snap':
-          await sleep(900)
-          break
-
         case 'insert':
           await editor.edit((edit) => {
             // const eol = snap.char === '\n' ? '\r\n' : snap.char
@@ -175,14 +171,12 @@ export function activate() {
             edit.insert(doc.positionAt(snap.cursor - 1), snap.char)
           })
           setCursor(snap.cursor)
-          await sleep(getTimeout(snap.char, 2))
           break
         case 'removal':
           await editor.edit((edit) => {
             edit.delete(new Range(doc.positionAt(snap.cursor), doc.positionAt(snap.cursor + 1)))
           })
           setCursor(snap.cursor)
-          await sleep(3)
           break
       }
     }

@@ -1,7 +1,7 @@
 import { calculatePatches, diffString, sliceInput } from './index'
 import type { AnimatorStep, Patch } from './index'
 
-export function* animatePatches(input: string, patches: Patch[]): Generator<AnimatorStep> {
+export function* patchSteps(input: string, patches: Patch[]): Generator<AnimatorStep> {
   let content = input
   // 当前游标
   let cursor = 0
@@ -72,10 +72,10 @@ export function *animateInsertionSlices(input: string) {
   }
 }
 
-export function animateTo(input: string, output: string) {
+export function stepsTo(input: string, output: string) {
   const delta = diffString(input, output)
   const patches = calculatePatches(delta)
-  return animatePatches(input, patches)
+  return patchSteps(input, patches)
 }
 
 /**
@@ -85,7 +85,7 @@ export function animateTo(input: string, output: string) {
  */
 export function applyPatches(input: string, patches: Patch[]) {
   // 每次只关注添加、删除的位置, 并且拼接起来
-  for (const patch of animatePatches(input, patches)) {
+  for (const patch of patchSteps(input, patches)) {
     if (patch.type === 'animator-finish')
       return patch.content
   }
