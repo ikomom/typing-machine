@@ -3,7 +3,7 @@
   "name": "ik-typing-machine",
   "displayName": "ik Typing Machine",
   "version": "0.0.0",
-  "description": "",
+  "description": "replay text",
   "author": "Ikomom <ikonon557@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/ikomom/typing-machine#readme",
@@ -16,6 +16,7 @@
   "categories": [
     "Other"
   ],
+  "icon": "./res/icon.png",
   "main": "./dist/index.js",
   "engines": {
     "vscode": "^1.74.0"
