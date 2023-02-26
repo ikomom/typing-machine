@@ -1,7 +1,7 @@
 import { existsSync, promises as fs } from 'fs'
+import { Snapshots, SnapshotsManager, getTimeout } from 'ik-typing-machine'
 import { EndOfLine, Range, Selection, commands, window, workspace } from 'vscode'
 
-import { Snapshots, SnapshotsManager } from 'ik-typing-machine'
 import { logOut } from './log'
 
 const snapExt = '.typingmachine'
@@ -175,14 +175,14 @@ export function activate() {
             edit.insert(doc.positionAt(snap.cursor - 1), snap.char)
           })
           setCursor(snap.cursor)
-          await sleep(Math.random() * 100)
+          await sleep(getTimeout(snap.char, 2))
           break
         case 'removal':
           await editor.edit((edit) => {
             edit.delete(new Range(doc.positionAt(snap.cursor), doc.positionAt(snap.cursor + 1)))
           })
           setCursor(snap.cursor)
-          await sleep(Math.random() * 10)
+          await sleep(3)
           break
       }
     }
