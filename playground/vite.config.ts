@@ -1,3 +1,4 @@
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Inspect from 'vite-plugin-inspect'
@@ -7,8 +8,12 @@ import UnoCSS from 'unocss/vite'
 
 export default defineConfig({
   plugins: [
-    Vue(),
-    UnoCSS(),
+    Vue({
+      reactivityTransform: true,
+    }),
+    UnoCSS({
+      configFile: resolve(__dirname, 'unocss.config.ts'),
+    }),
     Inspect(),
     Components({
       dts: './src/components.d.ts',
@@ -16,20 +21,21 @@ export default defineConfig({
     AutoImport({
       imports: [
         'vue',
+        'vue/macros',
         '@vueuse/core',
       ],
       dts: './src/auto-imports.d.ts',
     }),
   ],
-  build: {
-    rollupOptions: {
-      external: [
-        'local-pkg',
-        'fs',
-      ],
-      input: [
-        './index.html',
-      ],
-    },
-  },
+  // build: {
+  //   rollupOptions: {
+  //     external: [
+  //       'local-pkg',
+  //       'fs',
+  //     ],
+  //     input: [
+  //       './index.html',
+  //     ],
+  //   },
+  // },
 })

@@ -163,6 +163,15 @@ export class Snapshots extends Array<Snapshot> {
   typeMachine(options?: TypewriterOptions) {
     return typingAnimator(this.steps(), options)
   }
+
+  move(from: number, to: number) {
+    if (from === to)
+      return
+    const i = this.splice(from, 1)[0]
+    if (to > from)
+      to -= 1
+    this.splice(to, 0, i)
+  }
 }
 
 export type SnapshotFallbackLoader = (id: string) => Snapshots | undefined | Promise<Snapshots | undefined>

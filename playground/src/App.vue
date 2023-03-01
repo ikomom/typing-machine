@@ -1,19 +1,12 @@
 <script setup lang="ts">
-import { sliceInput } from '../../packages/core/src'
-sliceInput(`
-import { describe, expect, it } from 'vitest'
-import { one } from '../src'
-
-describe('should', () => {
-  it('exported', () => {
-    expect(one).toEqual(1)
-  })
-})
-`)
+import Snapshots from './components/Snapshots.vue'
+import { snaps } from './logics/snaps'
 </script>
 
 <template>
   <div font-sans leading-1em>
-    <Playground />
+    <Snapshots
+      :snaps="snaps"
+    />
   </div>
 </template>
