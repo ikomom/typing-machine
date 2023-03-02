@@ -1,0 +1,49 @@
+{
+  "name": "@ik-typing-machine/cli",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.12.0",
+  "homepage": "https://github.com/ikomom/typing-machine#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ikomom/typing-machine.git",
+    "directory": "packages/cli"
+  },
+  "author": "Ikomom <ikonon557@gmail.com>",
+  "bugs": "https://github.com/ikomom/typing-machine/issues",
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "bin": {
+    "typingmachine": "./bin/typingmachine.mjs"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "rimraf dist && unbuild",
+    "dev": "unbuild --stub",
+    "prepublishOnly": "nr build",
+    "play": "node .\\bin\\typingmachine.mjs play ../../example/main.js.typingmachine"
+  },
+  "dependencies": {
+    "ik-typing-machine": "workspace:../core",
+    "cac": "^6.7.12",
+    "cli-cursor": "^4.0.0",
+    "log-update": "^5.0.0",
+    "picocolors": "^1.0.0",
+    "simple-git": "^3.4.0"
+  },
+  "devDependencies": {
+    "cli-highlight": "^2.1.11"
+  }
+}

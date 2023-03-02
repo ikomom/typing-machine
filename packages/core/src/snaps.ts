@@ -3,6 +3,7 @@ import type { TypewriterOptions } from './typemachine'
 import { typingAnimator } from './typemachine'
 import type { AnimatorStep, Snapshot } from './types'
 
+export const SNAP_EXT = '.typingmachine'
 export const SNAP_HEADING = 'ik-typing-machine Snapshots v1'
 export const SNAP_SEPARATOR_PRE = '-'.repeat(2)
 export const SNAP_SEPARATOR_SUFFIX = '-'.repeat(10)
@@ -172,6 +173,11 @@ export class Snapshots extends Array<Snapshot> {
       to -= 1
     this.splice(to, 0, i)
   }
+}
+export function getSnapshotPath(id: string) {
+  if (id.endsWith(SNAP_EXT))
+    return id
+  return id + SNAP_EXT
 }
 
 export type SnapshotFallbackLoader = (id: string) => Snapshots | undefined | Promise<Snapshots | undefined>
