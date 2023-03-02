@@ -12,7 +12,6 @@ const { height: vh } = useWindowSize()
 const titleHeightPercent = computed(() => TITLE_HEIGHT / vh.value * 100)
 
 const handleResize = (event: { size: number }[]) => {
-  // eslint-disable-next-line no-console
   console.log('event', event)
 }
 const value = ref(`function index(){

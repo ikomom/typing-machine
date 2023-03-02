@@ -1,7 +1,7 @@
 import highlight from 'cli-highlight'
 import type { Snapshots } from 'ik-typing-machine'
 import cliCursor from 'cli-cursor'
-import logUpdate, { createLogUpdate } from 'log-update'
+import { createLogUpdate } from 'log-update'
 
 const langMap: Record<string, string> = {
   ts: 'typescript',
