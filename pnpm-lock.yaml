@@ -71,6 +71,8 @@ importers:
       ik-typing-machine: workspace:../core
       n-readlines: ^1.0.1
       tsup: ^6.5.0
+      vscode-oniguruma: ^1.7.0
+      vscode-textmate: ^9.0.0
     dependencies:
       ik-typing-machine: link:../core
       n-readlines: 1.0.1
@@ -78,6 +80,8 @@ importers:
       '@types/n-readlines': 1.0.3
       '@types/vscode': 1.75.0
       tsup: 6.6.2
+      vscode-oniguruma: 1.7.0
+      vscode-textmate: 9.0.0
 
   playground:
     specifiers:
@@ -5057,6 +5061,14 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: true
+
+  /vscode-oniguruma/1.7.0:
+    resolution: {integrity: sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==}
+    dev: true
+
+  /vscode-textmate/9.0.0:
+    resolution: {integrity: sha512-Cl65diFGxz7gpwbav10HqiY/eVYTO1sjQpmRmV991Bj7wAoOAjGQ97PpQcXorDE2Uc4hnGWLY17xme+5t6MlSg==}
     dev: true
 
   /vue-demi/0.13.11_vue@3.2.47:

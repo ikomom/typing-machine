@@ -60,7 +60,20 @@
           "group": "navigation@1170"
         }
       ]
-    }
+    },
+    "languages": [
+      {
+        "id": "typingmachine",
+        "extensions": [".typingmachine"]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "typingmachine",
+        "scopeName": "source.typingmachine",
+        "path": "./syntaxes/tmLanguage.json"
+      }
+    ]
   },
   "scripts": {
     "build": "tsup src/index.ts --external vscode",
@@ -76,6 +89,8 @@
   "devDependencies": {
     "@types/n-readlines": "^1.0.3",
     "@types/vscode": "^1.74.0",
-    "tsup": "^6.5.0"
+    "tsup": "^6.5.0",
+    "vscode-oniguruma": "^1.7.0",
+    "vscode-textmate": "^9.0.0"
   }
 }

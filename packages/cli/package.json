@@ -33,7 +33,7 @@
     "build": "rimraf dist && unbuild",
     "dev": "unbuild --stub",
     "prepublishOnly": "nr build",
-    "play": "node .\\bin\\typingmachine.mjs play ../../example/main.js.typingmachine"
+    "play": "node .\\bin\\typingmachine.mjs play ../../example/main.js"
   },
   "dependencies": {
     "cac": "^6.7.12",

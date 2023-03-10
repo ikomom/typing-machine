@@ -1,0 +1,43 @@
+{
+  "scopeName": "source.typingmachine",
+  "patterns": [
+    {
+      "include": "#snapshot"
+    },
+    {
+      "include": "#options"
+    },
+    {
+      "include": "#seperators"
+    },
+    {
+      "include": "source.js"
+    }
+  ],
+  "repository": {
+    "snapshot": {
+      "name": "punctuation.separator",
+      "begin": "--[\\d-]{2}----------",
+      "end": "(----OPTIONS----|--[\\d-]{2}----------)",
+      "patterns": [
+        {
+          "include": "source.text"
+        }
+      ]
+    },
+    "options": {
+      "name": "punctuation.separator",
+      "begin": "----OPTIONS----",
+      "end": "--[\\d-]{2}----------",
+      "patterns": [
+        {
+          "include": "source.yaml"
+        }
+      ]
+    },
+    "seperators": {
+      "name": "punctuation.separator",
+      "match": "(--[\\d-]{2}----------|----OPTIONS----|ik-typing-machine Snapshots v\\d)"
+    }
+  }
+}

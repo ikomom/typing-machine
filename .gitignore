@@ -9,6 +9,7 @@ lib-cov
 logs
 node_modules
 temp
+*.temp
 
 auto-imports.d.ts
 components.d.ts
